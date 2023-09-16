@@ -10,11 +10,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
     <body>
-      <div class="navbar">
+    <div class="navbar">
         <ul>
           <li>
             <a class="linkInicio" href="/">Inicio</a>
-            <a class="linkInicio" href="/">Crear Evento</a>
+            <a class="linkInicio" href="/crearEvento.php">Crear Evento</a>
           </li>
           <li>
             <a class="linkLogin" href="/login.php">Login</a>
@@ -22,13 +22,7 @@
         </ul>
       </div>
       <div class="page">
-      <div class="cabecera">
-          <img class="imagenSV" src="imagenes/logoSV.png"></img>
-          <img class="imagenWIP" src="imagenes/logoWIP.png"></img>
-        </div>
         <?php
-          echo '<h1>Yeah, it works!<h1>';
-          // phpinfo();
           $hostname = "db";
           $username = "admin";
           $password = "test";
@@ -43,18 +37,45 @@
 
         $query = mysqli_query($conn, "SELECT * FROM usuarios")
           or die (mysqli_error($conn));
-
-        while ($row = mysqli_fetch_array($query)) {
-          echo
-          "<tr>
-            <td>{$row['id']}</td>
-            <td>{$row['nombre']}</td>
-          </tr>";
-          
-
-        }
-
         ?>
+
+        <div class="formbox">
+            <div class="form-title">
+                Registro
+            </div>
+            <p class="desc">
+                A continuación se muestran ejemplos para cada campo
+            </p>
+            <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
+            <form class="form">
+                <div class="linea-form">
+                    <p>Titulo</p>
+                    <input type="text">
+                </div>
+                <div class="linea-form">
+                    <p>Enunciado</p>
+                    <input type="text">
+                </div>
+                <div class="linea-form">
+                    <p>Opcion 1 </p>
+                    <input type="text">
+                </div>
+                <div class="linea-form">
+                    <p>Resultado 1</p>
+                    <input type="text">
+                </div>
+                <div class="linea-form">
+                    <p>Opcion 2</p>
+                    <input type="text">
+                </div>
+                <div class="linea-form">
+                    <p>Resultado 2</p>
+                    <input type="text">
+                </div>
+                <button type="submit" class="boton">Crear</button>
+            </form>
+
+        </div>
       </div>
     </body>
 </html>
