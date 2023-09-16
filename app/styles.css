@@ -1,0 +1,46 @@
+:root{
+    --color1: #ffff;
+    --color2: #70cbe2;
+    --text-color: #ffff;
+    --font-family: 'Roboto', sans-serif;
+}
+
+body{
+    margin: 0 0;
+}
+
+.navbar{
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: var(--color2);
+    width: 100%;
+}
+
+.navbar ul{
+    padding-left: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+}
+
+.navbar ul li{
+    margin: 0 20px;
+    float: left;
+}
+
+.link{
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-family: var(--font-family);
+}
+
+.page{
+    margin: 40px 10px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
