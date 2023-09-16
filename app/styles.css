@@ -15,27 +15,36 @@ body{
     position: fixed;
     background-color: var(--color2);
     width: 100%;
+
 }
 
-.navbar ul{
-    padding-left: 0;
-    display: flex;
-    flex-flow: row nowrap;
-    list-style-type: none;
-}
 
 .navbar ul li{
     margin: 0 20px;
     display: inline-block;
 }
+.navbar ul{
+    padding-left: 0%;
+    display: flex;
+    justify-content: space-between;
+}
 
-.link{
+.linkInicio{
     text-decoration: none;
     color: var(--text-color);
     font-weight: bold;
     font-family: var(--font-family);
+    margin-right: 25px;
 }
 
+.linkLogin{
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-family: var(--font-family);
+    margin-left:10px;
+
+}
 .page{
     margin: 60px 10px;
     display: flex;

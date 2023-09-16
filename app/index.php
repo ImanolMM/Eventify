@@ -13,10 +13,11 @@
       <div class="navbar">
         <ul>
           <li>
-            <a class="link" href="/">Inicio</a>
+            <a class="linkInicio" href="/">Inicio</a>
+            <a class="linkInicio" href="/">Crear Evento</a>
           </li>
           <li>
-            <a class="link" href="/login.php">Registro</a>
+            <a class="linkLogin" href="/login.php">Login</a>
           </li>
         </ul>
       </div>
