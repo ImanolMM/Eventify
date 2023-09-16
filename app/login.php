@@ -3,6 +3,7 @@
     <head>
         <title>Eventify</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="login.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
         <!-- Fuente de letra roboto de Google  https://fonts.google.com/specimen/Roboto -->
@@ -39,7 +40,12 @@
         ?>
 
         <div class="formbox">
-          
+            <p class="center form-title">Registro</p>
+            <form class="form">
+                <input class="inputfield" type="text">
+                <input class="inputfield" type="text">
+            </form>
+
         </div>
       </div>
     </body>

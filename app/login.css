@@ -6,3 +6,24 @@
     width: 400px;
     height: 600px;
 }
+
+.form{
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: space-evenly;
+    justify-content: space-evenly;
+}
+
+.form .inputfield{
+    width: 80px;
+}
+
+.form-title{
+    border-radius: 10px;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    display: inline-block;
+    background-color: var(--color2);
+    padding: 10px;
+}
