@@ -26,7 +26,15 @@ body{
 
 .navbar ul li{
     margin: 0 20px;
-    float: left;
+    display: inline-block;
+    opacity: 
+}
+
+.navbar ul li:hover{
+    opacity: 0;
+    transition: ease-in-out;
+    transition: ease-in-out;
+    animation-duration: 2s;
 }
 
 .link{
@@ -37,10 +45,18 @@ body{
 }
 
 .page{
-    margin: 40px 10px;
+    margin: 60px 10px;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-evenly;
     align-content: center;
 }
 
+.formbox{
+    margin-top: 30px;
+    background-color: var(--color1);
+    border-radius: 20px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.404);
+    width: 400px;
+    height: 600px;
+}
