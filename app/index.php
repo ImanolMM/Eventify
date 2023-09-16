@@ -22,6 +22,10 @@
         </ul>
       </div>
       <div class="page">
+      <div class="cabecera">
+          <img class="imagenSV" src="imagenes/logoSV.jpg"></img>
+          <img class="imagenWIP" src="imagenes/logoWIP.png"></img>
+        </div>
         <?php
           echo '<h1>Yeah, it works!<h1>';
           // phpinfo();
