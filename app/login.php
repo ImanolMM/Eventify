@@ -11,13 +11,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
     <body>
-      <div class="navbar">
+    <div class="navbar">
         <ul>
           <li>
-            <a class="link" href="/">Inicio</a>
+            <a class="linkInicio" href="/">Inicio</a>
+            <a class="linkInicio" href="/">Crear Evento</a>
           </li>
           <li>
-            <a class="link" href="">Registro</a>
+            <a class="linkLogin" href="/login.php">Login</a>
           </li>
         </ul>
       </div>
@@ -43,18 +44,25 @@
             <div class="form-title">
                 Registro
             </div>
+            <p class="desc">
+                A continuación se muestran ejemplos para cada campo
+            </p>
             <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
             <form class="form">
                 <div class="linea-form">
-                    <p>Nombre y Apellidos</p>
+                    <p>Nombre y Apellidos: Jon Tom</p>
                     <input type="text">
                 </div>
                 <div class="linea-form">
-                    <p>Teléfono</p>
+                    <p>Teléfono: 123456789</p>
                     <input type="text">
                 </div>
                 <div class="linea-form">
-                    <p>Email</p>
+                    <p>DNI: 11111111-Z </p>
+                    <input type="text">
+                </div>
+                <div class="linea-form">
+                    <p>Email: jontom@gmail.com</p>
                     <input type="email">
                 </div>
                 <div class="linea-form">
@@ -62,11 +70,11 @@
                     <input type="date">
                 </div>
                 <div class="linea-form">
-                    <p>Nombre de usuario</p>
+                    <p>Nombre de usuario: JonTom123</p>
                     <input type="text">
                 </div>
                 <div class="linea-form">
-                    <p>Contraseña</p>
+                    <p>Contraseña: asd$27</p>
                     <input type="password">
                 </div>
                 <button type="submit" class="boton">Crear</button>
