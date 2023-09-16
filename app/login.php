@@ -43,10 +43,10 @@
             <div class="form-title">
                 Registro
             </div>
-            <!-- https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
+            <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
             <form class="form">
                 <div class="linea-form">
-                    <p>Nombre</p>
+                    <p>Nombre y Apellidos</p>
                     <input type="text">
                 </div>
                 <div class="linea-form">
@@ -54,16 +54,16 @@
                     <input type="text">
                 </div>
                 <div class="linea-form">
-                    <p>Edad</p>
-                    <input type="number">
+                    <p>Email</p>
+                    <input type="email">
                 </div>
                 <div class="linea-form">
-                    <p>Género</p>
-                    <div class="genero">
-                        <input type="radio" name="genero"></input>Hombre
-                        <input type="radio" name="genero"></input>Mujer
-                        <input type="radio" name="genero"></input>Otro
-                    </div>
+                    <p>Fecha de nacimiento</p>
+                    <input type="date">
+                </div>
+                <div class="linea-form">
+                    <p>Nombre de usuario</p>
+                    <input type="text">
                 </div>
                 <div class="linea-form">
                     <p>Contraseña</p>
