@@ -23,7 +23,7 @@
       </div>
       <div class="page">
       <div class="cabecera">
-          <img class="imagenSV" src="imagenes/logoSV.jpg"></img>
+          <img class="imagenSV" src="imagenes/logoSV.png"></img>
           <img class="imagenWIP" src="imagenes/logoWIP.png"></img>
         </div>
         <?php
