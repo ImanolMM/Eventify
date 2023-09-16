@@ -69,3 +69,7 @@
     border: none;
     font-size: 25px;
 }
+
+.boton:hover{
+    cursor: pointer;
+}

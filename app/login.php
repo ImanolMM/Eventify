@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
     <body>
+    <script src="form.js"></script>
     <div class="navbar">
         <ul>
           <li>
@@ -48,36 +49,36 @@
                 A continuación se muestran ejemplos para cada campo
             </p>
             <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
-            <form class="form">
+            <form class="form" action="/submit.php">
                 <div class="linea-form">
                     <p>Nombre y Apellidos: Jon Tom</p>
-                    <input type="text">
+                    <input type="text" name="nombre">
                 </div>
                 <div class="linea-form">
                     <p>Teléfono: 123456789</p>
-                    <input type="text">
+                    <input type="text" name="telefono">
                 </div>
                 <div class="linea-form">
                     <p>DNI: 11111111-Z </p>
-                    <input type="text">
+                    <input type="text" name="dni">
                 </div>
                 <div class="linea-form">
                     <p>Email: jontom@gmail.com</p>
-                    <input type="email">
+                    <input type="email" name="email">
                 </div>
                 <div class="linea-form">
                     <p>Fecha de nacimiento</p>
-                    <input type="date">
+                    <input type="date" name="nacimiento">
                 </div>
                 <div class="linea-form">
                     <p>Nombre de usuario: JonTom123</p>
-                    <input type="text">
+                    <input type="text" name="usuario">
                 </div>
                 <div class="linea-form">
                     <p>Contraseña: asd$27</p>
-                    <input type="password">
+                    <input type="password" name="passwd">
                 </div>
-                <button type="submit" class="boton">Crear</button>
+                <button type="submit" class="boton" id="submit">Crear</button>
             </form>
 
         </div>
