@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Eventify</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="crearEvento.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
         <!-- Fuente de letra roboto de Google  https://fonts.google.com/specimen/Roboto -->
@@ -14,7 +14,7 @@
         <ul>
           <li>
             <a class="linkInicio" href="/">Inicio</a>
-            <a class="linkInicio" href="/crearEvento.php">Crear Evento</a>
+            <a class="linkInicio" href="/">Crear Evento</a>
           </li>
           <li>
             <a class="linkLogin" href="/login.php">Login</a>
