@@ -1,6 +1,6 @@
 :root{
     --color1: #ffff;
-    --color2: #70cbe2;
+    --color2: rgba(243,146,3);
     --text-color: #ffff;
     --font-family: 'Roboto', sans-serif;
 }
@@ -56,7 +56,8 @@ body{
 .cabecera{
     top: 0;
     left: 0;
-    background-color: rgba(254, 235, 97);
+    background-color: white;
+    border-bottom: 2px solid black;
     width: 100%;
     height: 200px;
     padding-left: 0%;
@@ -72,4 +73,5 @@ body{
 
 .imagenWIP{
     height: 100%;
+    border-radius: 50%;
 }
