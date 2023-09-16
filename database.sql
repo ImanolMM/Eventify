@@ -32,6 +32,15 @@ CREATE TABLE `usuarios` (
   `nombre` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE 'evento' (
+  'idUsuario' int(11) NOT NULL,
+  'titulo' varchar NOT NULL,
+  'enunciado' varchar NOT NULL,
+  'opcion1' varchar NOT NULL,
+  'resultado1' varchar NOT NULL,
+  'opcion2' varchar NOT NULL,
+  'resultado2' varchar NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Volcado de datos para la tabla `usuarios`
 --
@@ -49,6 +58,10 @@ INSERT INTO `usuarios` (`id`, `nombre`) VALUES
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
+COMMIT;
+
+ALTER TABLE `evento`
+  ADD PRIMARY KEY (`idUsuario`,`titulo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
