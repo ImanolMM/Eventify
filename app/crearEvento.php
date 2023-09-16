@@ -41,10 +41,10 @@
 
         <div class="formbox">
             <div class="form-title">
-                Registro
+                Crear evento
             </div>
             <p class="desc">
-                A continuación se muestran ejemplos para cada campo
+                Construya su evento aqui
             </p>
             <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
             <form class="form">
