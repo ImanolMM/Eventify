@@ -14,7 +14,7 @@
         <ul>
           <li>
             <a class="linkInicio" href="/">Inicio</a>
-            <a class="linkInicio" href="/crearEvento.php">Crear Evento</a>
+            <a class="linkInicio" href="/">Crear Evento</a>
           </li>
           <li>
             <a class="linkLogin" href="/login.php">Login</a>
@@ -27,7 +27,6 @@
           <img class="imagenWIP" src="imagenes/logoWIP.png"></img>
         </div>
         <?php
-          echo '<h1>Yeah, it works!<h1>';
           // phpinfo();
           $hostname = "db";
           $username = "admin";
@@ -45,7 +44,7 @@
           or die (mysqli_error($conn));
 
         while ($row = mysqli_fetch_array($query)) {
-          echo
+         // echo
           "<tr>
             <td>{$row['id']}</td>
             <td>{$row['nombre']}</td>
@@ -55,6 +54,14 @@
         }
 
         ?>
+      </div>
+      <div class= "evento">
+        <div class="barraUsuario">
+          <img class="imagenUsuarioEvento" src="imagenes/profilePicture.png"></img>
+          <p class="nombreUsuarioEvento">Nombre del usuario</p>
+        </div>
+        <h2 class="tituloEvento">Nombre del evento</h2>
+        <p class="descripcionEvento">Descripción del evento porque mola porque es la moda, survival vacation al poder. Working In Progress god cabron, me renta descargarme este juego loool que guapo que está dios. Está creado por los mismísmos dioses griegos </p>
       </div>
     </body>
 </html>
