@@ -4,7 +4,7 @@
         <title>Eventify</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-        
+
         <!-- Fuente de letra roboto de Google  https://fonts.google.com/specimen/Roboto -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
