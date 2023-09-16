@@ -27,14 +27,6 @@ body{
 .navbar ul li{
     margin: 0 20px;
     display: inline-block;
-    opacity: 
-}
-
-.navbar ul li:hover{
-    opacity: 0;
-    transition: ease-in-out;
-    transition: ease-in-out;
-    animation-duration: 2s;
 }
 
 .link{
