@@ -44,11 +44,3 @@ body{
     align-content: center;
 }
 
-.formbox{
-    margin-top: 30px;
-    background-color: var(--color1);
-    border-radius: 20px;
-    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.404);
-    width: 400px;
-    height: 600px;
-}
