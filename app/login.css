@@ -4,26 +4,56 @@
     border-radius: 20px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.404);
     width: 400px;
-    height: 600px;
+    height: fit-content;
+    padding: 30px 0;
 }
 
 .form{
     height: 100%;
-    display: flex;
-    flex-flow: column wrap;
-    align-content: space-evenly;
-    justify-content: space-evenly;
+    display: table;
+    margin: 0 auto;
 }
 
-.form .inputfield{
-    width: 80px;
+.form p{
+    display: table-cell;
+}
+
+.form input{
+    display: table-cell;
 }
 
 .form-title{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    width: 30%;
     border-radius: 10px;
-    font-family: var(--font-family);
     color: var(--text-color);
-    display: inline-block;
+    margin: 20px auto;
     background-color: var(--color2);
     padding: 10px;
+}
+
+.linea-form{
+    display: table-row;
+}
+
+.link{
+    text-decoration: none;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.genero{
+    width: 40%;
+}
+
+.boton{
+    border-radius: 10px;
+    background-color: var(--color2);
+    font-family: var(--font-family);
+    color: var(--color1);
+    border: none;
+    font-size: 25px;
 }

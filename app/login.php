@@ -40,10 +40,36 @@
         ?>
 
         <div class="formbox">
-            <p class="center form-title">Registro</p>
+            <div class="form-title">
+                Registro
+            </div>
+            <!-- https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
             <form class="form">
-                <input class="inputfield" type="text">
-                <input class="inputfield" type="text">
+                <div class="linea-form">
+                    <p>Nombre</p>
+                    <input type="text">
+                </div>
+                <div class="linea-form">
+                    <p>Teléfono</p>
+                    <input type="text">
+                </div>
+                <div class="linea-form">
+                    <p>Edad</p>
+                    <input type="number">
+                </div>
+                <div class="linea-form">
+                    <p>Género</p>
+                    <div class="genero">
+                        <input type="radio" name="genero"></input>Hombre
+                        <input type="radio" name="genero"></input>Mujer
+                        <input type="radio" name="genero"></input>Otro
+                    </div>
+                </div>
+                <div class="linea-form">
+                    <p>Contraseña</p>
+                    <input type="password">
+                </div>
+                <button type="submit" class="boton">Crear</button>
             </form>
 
         </div>
