@@ -56,8 +56,7 @@ body{
 .cabecera{
     top: 0;
     left: 0;
-    background-color: white;
-    border-bottom: 2px solid black;
+    background-color: #FEEB61;
     width: 100%;
     height: 200px;
     padding-left: 0%;
@@ -67,10 +66,14 @@ body{
 }
 
 .imagenSV{
-    height: 117%;
+    height: 100%;
     
 }
-
+.titulo{
+    
+    font-size: 150px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 .imagenWIP{
     height: 100%;
     border-radius: 50%;
