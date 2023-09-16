@@ -64,6 +64,7 @@ function comprobarNombre(nombre) {
     if (/^[A-Za-z\s]+$/.test(nombre)) {
         return true
     } else {
+        alert("Solo se admiten letras y espacios en el nombre")
         return false
     }
 }
@@ -73,6 +74,7 @@ function comprobarEmail(email) {
     if (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/.test(email)) {
         return true
     } else {
+        alert("Email no válido")
         return false
     }
 }
@@ -82,6 +84,7 @@ function comprobarNacimiento(nacimiento) {
     if (/^\d{4}-\d{2}-\d{2}$|^\d{2}-\d{2}-\d{4}$/.test(nacimiento)) {
         return true
     } else {
+        alert("La fecha de nacimiento debe seguir estos formatos: yyyy-mm-dd o dd-mm-yyyy")
         return false
     }
 }
@@ -91,6 +94,7 @@ function comprobarUsuario(usuario) {
     if (/^[a-zA-Z0-9]+$/.test(usuario)) {
         return true
     } else {
+        alert("El usuario debe incluir solo números y letras")
         return false
     }
 }
@@ -101,7 +105,8 @@ function validarDNI(dni) {
   
     // Verificar si el DNI coincide con el formato esperado
     if (!dniRegex.test(dni)) {
-      return false;
+        alert("Formato de DNI no válido")
+        return false;
     }
   
     // Extraer el número y la letra del DNI
@@ -114,6 +119,9 @@ function validarDNI(dni) {
     const letraCalculada = letrasPosibles[numero % 23];
   
     // Comparar la letra calculada con la letra proporcionada
+    if(letra !== letraCalculada){
+        alert("La letra del DNI no es correcta")
+    }
     return letra === letraCalculada;
   }
   
