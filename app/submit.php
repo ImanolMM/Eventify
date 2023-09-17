@@ -65,6 +65,11 @@
                             $stmt->close();
                             echo "Usuario creado";
                     }
+
+                    // https://www.w3schools.com/php/func_network_setcookie.asp
+                    $cookie_name = "user";
+                    $cookie_value = $usuario;
+                    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
                 }else{
                     echo "Ya existe un usuario con ese nombre de usuario";
                 }
