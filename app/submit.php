@@ -4,9 +4,22 @@
         <title>
             Eventify
         </title>
+        <link rel="stylesheet" href="submit.css">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div style="margin: 0 auto;">
+        <div class="navbar">
+            <ul>
+            <li>
+                <a class="linkInicio" href="/">Inicio</a>
+                <a class="linkInicio" href="/crearEvento.php">Crear Evento</a>
+            </li>
+            <li>
+                <a class="linkLogin" href="/login.php">Login</a>
+            </li>
+            </ul>
+        </div>
+        <div class="page mensaje">
             <?php
             // https://www.freecodecamp.org/news/creating-html-forms/
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
