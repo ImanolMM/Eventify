@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 17-09-2023 a las 09:50:39
+-- Tiempo de generación: 17-09-2023 a las 10:03:13
 -- Versión del servidor: 10.8.2-MariaDB-1:10.8.2+maria~focal
 -- Versión de PHP: 8.2.8
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `evento`
+-- Estructura de tabla para la tabla `eventos`
 --
 
-CREATE TABLE `evento` (
+CREATE TABLE `eventos` (
   `usuario` varchar(50) NOT NULL,
   `titulo` varchar(255) NOT NULL,
   `enunciado` varchar(255) NOT NULL,
@@ -36,6 +36,13 @@ CREATE TABLE `evento` (
   `opcion2` varchar(255) NOT NULL,
   `resultado2` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `eventos`
+--
+
+INSERT INTO `eventos` (`usuario`, `titulo`, `enunciado`, `opcion1`, `resultado1`, `opcion2`, `resultado2`) VALUES
+('Imanol', 'Las aventuras de WIP games', 'Era un día soleado cuando nos encontramos una cueva misteriosa, estaba muy oscura y nos dieron ganas de entrar. Poco a poco se hacía la luz dentro de la cueva y de repente vimos una estatua gigante rodeada de oro', 'Oro! Tenemos que coger todo lo que podamos! Nos haremos ricos!!', 'Era una trampa, hemos caido en un agujero sin salida...', 'No hacemos nada, podría ser una trampa', 'Nos vamos con las manos vacías pero con una increible historia que contar a nuestros hijos');
 
 -- --------------------------------------------------------
 
@@ -58,9 +65,9 @@ CREATE TABLE `usuarios` (
 --
 
 --
--- Indices de la tabla `evento`
+-- Indices de la tabla `eventos`
 --
-ALTER TABLE `evento`
+ALTER TABLE `eventos`
   ADD PRIMARY KEY (`usuario`,`titulo`);
 
 --
