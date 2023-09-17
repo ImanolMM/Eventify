@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Eventify</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="editarPost.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
         <!-- Fuente de letra roboto de Google  https://fonts.google.com/specimen/Roboto -->
@@ -38,22 +38,29 @@
             die("Database connection failed: " . $conn->connect_error);
           }
 
-          $query = mysqli_query($conn, "SELECT * FROM eventos")
-            or die (mysqli_error($conn));
 
-          while ($row = mysqli_fetch_array($query)) {
-            echo "
-            <div class='evento'>
-                <div class='barraUsuario'>
-                    <img class='imagenUsuarioEvento' src='imagenes/profilePicture.png'></img>
-                    <p class='nombreUsuarioEvento'>{$row['usuario']}</p>
-                </div>
-                <h2 class='tituloEvento'>{$row['titulo']}</h2>
-                <p class='descripcionEvento'>{$row['enunciado']}</p>
-            </div>
-            ";
-          }
+
+        $query = mysqli_query($conn, "SELECT * FROM usuarios")
+          or die (mysqli_error($conn));
+
+        while ($row = mysqli_fetch_array($query)) {
+         // echo
+          "<tr>
+            <td>{$row['id']}</td>
+            <td>{$row['nombre']}</td>
+          </tr>";
           
+
+        }
+
         ?>
+      </div>
+      <div class= "evento">
+        <div class="barraUsuario">
+          <button class="botonEditar" id="botonEditar"> Editar post </button>
+        </div>
+        <h2 class="tituloEvento">Nombre del evento</h2>
+        <p class="descripcionEvento">Descripción del evento porque mola porque es la moda, survival vacation al poder. Working In Progress god cabron, me renta descargarme este juego loool que guapo que está dios. Está creado por los mismísmos dioses griegos </p>
+      </div>
     </body>
 </html>
