@@ -57,7 +57,7 @@
       </div>
       <div class= "evento">
         <div class="barraUsuario">
-          <button class="botonEditar" id="botonEditar"> Editar post </button>
+          <button class="botonEditar" id="botonEditar"> Editar evento </button>
         </div>
         <h2 class="tituloEvento">Nombre del evento</h2>
         <p class="descripcionEvento">Descripción del evento porque mola porque es la moda, survival vacation al poder. Working In Progress god cabron, me renta descargarme este juego loool que guapo que está dios. Está creado por los mismísmos dioses griegos </p>

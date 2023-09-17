@@ -15,6 +15,7 @@
           <li>
             <a class="linkInicio" href="/">Inicio</a>
             <a class="linkInicio" href="/crearEvento.php">Crear Evento</a>
+            <a class="linkInicio" href="/editarPost.php">Crear Evento</a>
           </li>
           <li>
             <a class="linkLogin" href="/login.php">Login</a>
