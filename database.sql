@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 16-09-2020 a las 16:37:17
--- Versión del servidor: 10.5.5-MariaDB-1:10.5.5+maria~focal
--- Versión de PHP: 7.4.9
+-- Tiempo de generación: 17-09-2023 a las 09:50:39
+-- Versión del servidor: 10.8.2-MariaDB-1:10.8.2+maria~focal
+-- Versión de PHP: 8.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,45 +24,50 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `evento`
+--
+
+CREATE TABLE `evento` (
+  `usuario` varchar(50) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `enunciado` varchar(255) NOT NULL,
+  `opcion1` varchar(255) NOT NULL,
+  `resultado1` varchar(255) NOT NULL,
+  `opcion2` varchar(255) NOT NULL,
+  `resultado2` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `nombre` text NOT NULL
+  `nombre` text NOT NULL,
+  `telef` int(11) NOT NULL,
+  `dni` varchar(10) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `nacimiento` date NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `passwd` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE evento (
-  idUsuario int(11) NOT NULL,
-  titulo varchar(255) NOT NULL,
-  enunciado varchar(255) NOT NULL,
-  opcion1 varchar(255) NOT NULL,
-  resultado1 varchar(255) NOT NULL,
-  opcion2 varchar(255) NOT NULL,
-  resultado2 varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nombre`) VALUES
-(1, 'mikel'),
-(2, 'aitor');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `evento`
+--
+ALTER TABLE `evento`
+  ADD PRIMARY KEY (`usuario`,`titulo`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
-COMMIT;
-
-ALTER TABLE `evento`
-  ADD PRIMARY KEY (`idUsuario`,`titulo`);
+  ADD PRIMARY KEY (`usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

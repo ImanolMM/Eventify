@@ -57,10 +57,6 @@
     font-weight: bold;
 }
 
-.genero{
-    width: 40%;
-}
-
 .boton{
     border-radius: 10px;
     background-color: var(--color2);
