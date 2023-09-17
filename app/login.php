@@ -49,7 +49,7 @@
                 A continuación se muestran ejemplos para cada campo
             </p>
             <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
-            <form class="form" action="/submit.php">
+            <form class="form" action="/submit.php" id="form-registro" method="POST">
                 <div class="linea-form">
                     <p>Nombre y Apellidos: Jon Tom</p>
                     <input type="text" name="nombre">
@@ -78,7 +78,7 @@
                     <p>Contraseña: asd$27</p>
                     <input type="password" name="passwd">
                 </div>
-                <button type="submit" class="boton" id="submit">Crear</button>
+                <button type="submit" class="boton" id="botonRegistro">Crear</button>
             </form>
 
         </div>

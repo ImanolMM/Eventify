@@ -2,7 +2,7 @@ window.onload = init
 // https://stackoverflow.com/q/8935632 comprobar números
 // https://stackoverflow.com/q/9862761 comprobar letras
 function init() {
-    var boton = document.getElementById("submit")
+    var boton = document.getElementById("botonRegistro")
     boton.addEventListener("click", () => {
         event.preventDefault();
         var aceptado = true
@@ -34,6 +34,10 @@ function init() {
         // comprobarPasswd(aceptado, passwd)
         
         console.log(aceptado)
+        if(aceptado){
+            var form = document.getElementById("form-registro")
+            form.submit()
+        }
     })
 }
 
