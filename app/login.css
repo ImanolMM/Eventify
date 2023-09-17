@@ -64,6 +64,12 @@
     color: var(--color1);
     border: none;
     font-size: 25px;
+    display: table-cell;
+}
+
+.botones{
+    width: 100%;
+    display: table-row;
 }
 
 .boton:hover{

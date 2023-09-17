@@ -9,6 +9,7 @@
         $nacimiento = $_POST["nacimiento"];
         $usuario = $_POST["usuario"];
         $passwd = $_POST["passwd"];
+        $tipo = $_POST["tiporegistro"];
 
         $hostname = "db";
         $username = "admin";
@@ -49,7 +50,29 @@
             $cookie_value = $usuario;
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
         }else{
-            $mensaje = "Ya existe un usuario con ese nombre de usuario";
+            if($tipo == "signin"){
+                // iniciar sesión, comprobar contraseña
+
+                $query = mysqli_query($conn, "SELECT * FROM usuarios WHERE usuario = '" . $usuario ."'")
+                    or die (mysqli_error($conn));
+
+                $passCorrecta = false;
+
+                while ($row = mysqli_fetch_array($query)) {
+                    $passCorrecta = $row['passwd'] == $passwd;
+                }
+
+                if($passCorrecta){
+                    $mensaje = "Inicio de sesión correcto";
+                    $cookie_name = "user";
+                    $cookie_value = $usuario;
+                    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
+                }
+                
+            }else{
+                $mensaje = "Ya existe un usuario con ese nombre de usuario";
+            }
+            
         }
         
     }else{

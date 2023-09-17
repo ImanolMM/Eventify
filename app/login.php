@@ -50,23 +50,23 @@
             </p>
             <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
             <form class="form" action="/submit.php" id="form-registro" method="POST">
-                <div class="linea-form">
+                <div class="linea-form" id="linea-nombre">
                     <p>Nombre y Apellidos: Jon Tom</p>
                     <input type="text" name="nombre">
                 </div>
-                <div class="linea-form">
+                <div class="linea-form" id="linea-telefono">
                     <p>Teléfono: 123456789</p>
                     <input type="text" name="telefono">
                 </div>
-                <div class="linea-form">
+                <div class="linea-form" id="linea-dni">
                     <p>DNI: 11111111-Z </p>
                     <input type="text" name="dni">
                 </div>
-                <div class="linea-form">
+                <div class="linea-form" id="linea-email">
                     <p>Email: jontom@gmail.com</p>
                     <input type="email" name="email">
                 </div>
-                <div class="linea-form">
+                <div class="linea-form" id="linea-nacimiento">
                     <p>Fecha de nacimiento</p>
                     <input type="date" name="nacimiento">
                 </div>
@@ -78,8 +78,14 @@
                     <p>Contraseña: asd$27</p>
                     <input type="password" name="passwd">
                 </div>
-                <button type="submit" class="boton" id="botonRegistro">Crear</button>
-            </form>
+                <div class="linea-form">
+                  <input type="hidden" value="signup" name="tiporegistro">
+                  <p>
+                    <button type="submit" class="boton" id="botonRegistro">Crear</button>
+                  </p>                  
+                  <button class="boton" id="botonIniciar">Cambiar a Iniciar sesión</button>
+                </div>
+              </form>
 
         </div>
       </div>

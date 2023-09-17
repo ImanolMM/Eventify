@@ -14,20 +14,23 @@ function init() {
         var usuario = document.getElementsByName("usuario")[0]?.value
         var passwd = document.getElementsByName("passwd")[0]?.value
 
-        aceptado = aceptado && comprobarNombre(nombre)
-        console.log("Nombre", aceptado)
+        if(document.getElementById("botonIniciar").innerHTML !== "Cambiar a Crear cuenta"){
+            aceptado = aceptado && comprobarNombre(nombre)
+            console.log("Nombre", aceptado)
 
-        aceptado = aceptado && comprobarTelefono(telefono)
-        console.log("Telefono", aceptado)
+            aceptado = aceptado && comprobarTelefono(telefono)
+            console.log("Telefono", aceptado)
 
-        aceptado = aceptado && validarDNI(dni)
-        console.log("DNI", aceptado)
+            aceptado = aceptado && validarDNI(dni)
+            console.log("DNI", aceptado)
 
-        aceptado = aceptado && comprobarEmail(email)
-        console.log("Email", aceptado)
+            aceptado = aceptado && comprobarEmail(email)
+            console.log("Email", aceptado)
 
-        aceptado = aceptado && comprobarNacimiento(nacimiento)
-        console.log("Nacimiento", aceptado)
+            aceptado = aceptado && comprobarNacimiento(nacimiento)
+            console.log("Nacimiento", aceptado)
+        }
+        
 
         aceptado = aceptado && comprobarUsuario(usuario)
         console.log("Aceptado", aceptado)
@@ -37,6 +40,37 @@ function init() {
         if(aceptado){
             var form = document.getElementById("form-registro")
             form.submit()
+        }
+    })
+
+    var botonSesion = document.getElementById("botonIniciar")
+    botonSesion.addEventListener("click", () => {
+        event.preventDefault()
+
+        var nombre = document.getElementById("linea-nombre")
+        var telefono = document.getElementById("linea-telefono")
+        var dni = document.getElementById("linea-dni")
+        var email = document.getElementById("linea-email")
+        var nacimiento = document.getElementById("linea-nacimiento")
+        var tipo = document.getElementsByName("tiporegistro")[0]
+        
+        if(botonSesion.innerHTML === "Cambiar a Iniciar sesión"){
+            botonSesion.innerHTML = "Cambiar a Crear cuenta"
+            nombre.style.display = "none"
+            telefono.style.display = "none"
+            dni.style.display = "none"
+            email.style.display = "none"
+            nacimiento.style.display = "none"
+            tipo.value = "signin" // iniciar sesión
+        }else{
+            botonSesion.innerHTML = "Cambiar a Iniciar sesión"
+            nombre.style.display = "table-row"
+            telefono.style.display = "table-row"
+            dni.style.display = "table-row"
+            email.style.display = "table-row"
+            nacimiento.style.display = "table-row"
+            tipo.value = "signup" // Crear cuenta
+            
         }
     })
 }
