@@ -104,6 +104,7 @@ body{
 .barraUsuario{
     display: flex;
     width: 100%;
+    justify-content: space-between;
 }
 .imagenUsuarioEvento{
     margin-left: 20px;
@@ -127,4 +128,19 @@ body{
     color: var(--color1);
     border: none;
     font-size: 25px;
+}
+.botonEliminar{
+    border-radius: 10px;
+    background-color: red;
+    font-family: var(--font-family);
+    color: var(--color1);
+    border: none;
+    font-size: 25px;
+}
+
+.botonEliminar:hover{
+    cursor: pointer;
+}
+.botonEditar:hover{
+    cursor: pointer;
 }
