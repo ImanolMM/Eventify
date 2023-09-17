@@ -112,6 +112,7 @@ body{
 }
 .tituloEvento{
     text-align: center;
+    margin-top: 0px;
 }
 .nombreUsuarioEvento{
     margin-left: 10px;
