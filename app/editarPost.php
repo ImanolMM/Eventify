@@ -38,21 +38,28 @@
             die("Database connection failed: " . $conn->connect_error);
           }
 
-
-
-        $query = mysqli_query($conn, "SELECT * FROM usuarios")
-          or die (mysqli_error($conn));
-
-        while ($row = mysqli_fetch_array($query)) {
-         // echo
-          "<tr>
-            <td>{$row['id']}</td>
-            <td>{$row['nombre']}</td>
-          </tr>";
           
 
-        }
 
+          if(!isset($_COOKIE["user"])) {
+          }else {
+              $query = mysqli_query($conn, "SELECT * FROM eventos WHERE usuario='".$_COOKIE["user"]."'")
+              or die (mysqli_error($conn));
+
+              while ($row = mysqli_fetch_array($query)) {
+                echo "
+                <div class='evento'>
+                    <div class='barraUsuario'>
+                    <button class='botonEditar' id='botonEditar'> Editar evento </button>
+                    </div>
+                    <h2 class='tituloEvento'>{$row['titulo']}</h2>
+                    <p class='descripcionEvento'>{$row['enunciado']}</p>
+                </div>
+                ";
+              }
+          }
+
+          
         ?>
       </div>
       <div class= "evento">
