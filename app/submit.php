@@ -1,51 +1,66 @@
-<?php
-// https://www.freecodecamp.org/news/creating-html-forms/
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
-    $nombre = $_POST["nombre"];
-    $telef = $_POST["telefono"];
-    $dni = $_POST["dni"];
-    $email = $_POST["email"];
-    $nacimiento = $_POST["nacimiento"];
-    $usuario = $_POST["usuario"];
-    $passwd = $_POST["passwd"];
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Eventify
+        </title>
+    </head>
+    <body>
+        <div style="margin: 0 auto;">
+            <?php
+            // https://www.freecodecamp.org/news/creating-html-forms/
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Display the submitted data
-    echo "Name: " . $nombre . "<br>";
-    echo "Email: " . $telef . "<br>";
-    echo "dni: " . $dni . "<br>";
-    echo "email: " . $email . "<br>";
-    echo "nacimiento: " . $nacimiento . "<br>";
-    echo "usuario: " . $usuario . "<br>";
-    echo "passwd: " . $passwd . "<br>";
+                $nombre = $_POST["nombre"];
+                $telef = $_POST["telefono"];
+                $dni = $_POST["dni"];
+                $email = $_POST["email"];
+                $nacimiento = $_POST["nacimiento"];
+                $usuario = $_POST["usuario"];
+                $passwd = $_POST["passwd"];
 
-    // phpinfo();
-    $hostname = "db";
-    $username = "admin";
-    $password = "test";
-    $db = "database";
+                $hostname = "db";
+                $username = "admin";
+                $password = "test";
+                $db = "database";
 
-    $conn = mysqli_connect($hostname,$username,$password,$db);
-    if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
-    }
-
+                $conn = mysqli_connect($hostname,$username,$password,$db); 
+                if ($conn->connect_error) {
+                die("Database connection failed: " . $conn->connect_error);
+                }
 
 
-    $query = mysqli_query($conn, "SELECT * FROM usuarios WHERE nombre = '" . $nombre ."'")
-        or die (mysqli_error($conn));
 
-    $existeUsuario = false;
+                $query = mysqli_query($conn, "SELECT * FROM usuarios WHERE usuario = '" . $usuario ."'")
+                    or die (mysqli_error($conn));
 
-    while ($row = mysqli_fetch_array($query)) {
-        $existeUsuario = $existeUsuario && ($row['usuario'] == $usuario);
-    }
+                $existeUsuario = false;
 
-    if(!$existeUsuario){
-        $query = mysqli_query($conn, "INSERT INTO usuarios(nombre) VALUES('" . $nombre ."')")
-        or die (mysqli_error($conn));
-        echo "Usuario creado";
-    }
-    
-}
-?>
+                while ($row = mysqli_fetch_array($query)) {
+                    $existeUsuario = $existeUsuario || ($row['usuario'] == $usuario);
+                }
+
+                // https://www.php.net/manual/es/mysqli.prepare.php en los comentarios, el de urso
+                if(!$existeUsuario){
+
+                    $consulta = "INSERT INTO usuarios VALUES(?, ?, ?, ?, ?, ?, ?)";
+                    $tipos = "sisssss";
+                    $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $usuario, $passwd);
+                    if($stmt = mysqli_prepare($conn, $consulta)){
+                            $stmt->bind_param($tipos, ...$parametros);
+                            $stmt->execute();
+                            $stmt->close();
+                            echo "Usuario creado";
+                    }
+                }else{
+                    echo "Ya existe un usuario con ese nombre de usuario";
+                }
+                
+            }else{
+                header("/"); // redirigimos a inicio si no es POST
+                exit();
+            }
+            ?>
+        </div>
+    </body>
+</html>
