@@ -32,15 +32,16 @@ CREATE TABLE `usuarios` (
   `nombre` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE 'evento' (
-  'idUsuario' int(11) NOT NULL,
-  'titulo' varchar NOT NULL,
-  'enunciado' varchar NOT NULL,
-  'opcion1' varchar NOT NULL,
-  'resultado1' varchar NOT NULL,
-  'opcion2' varchar NOT NULL,
-  'resultado2' varchar NOT NULL
+CREATE TABLE evento (
+  idUsuario int(11) NOT NULL,
+  titulo varchar(255) NOT NULL,
+  enunciado varchar(255) NOT NULL,
+  opcion1 varchar(255) NOT NULL,
+  resultado1 varchar(255) NOT NULL,
+  opcion2 varchar(255) NOT NULL,
+  resultado2 varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Volcado de datos para la tabla `usuarios`
 --
