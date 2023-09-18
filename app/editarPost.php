@@ -41,11 +41,11 @@
                 echo "
                 <div class='evento'>
                     <div class='barraUsuario'>
-                    <form action='editar.php' method='post'>
-                    <input type='hidden' name='titulo' value={$row['titulo']} />
-                    <button class='botonEditar'> Editar </button>
-                    </form>
-                    <button class='botonEliminar'> Eliminar evento </button>
+                      <form action='editar.php' method='post' >
+                        <input type='hidden' name='titulo' value={$row['titulo']} />
+                        <button class='botonEditar'> Editar </button>
+                      </form>
+                      <button class='botonEliminar'> Eliminar evento </button>
                     </div>
                     <h2 class='tituloEvento'>{$row['titulo']}</h2>
                     <p class='descripcionEvento'>{$row['enunciado']}</p>
@@ -57,13 +57,17 @@
           
         ?>
       </div>
-      <div class= "evento">
-        <div class="barraUsuario">
-          <button class="botonEditar" id="botonEditar"> Editar evento </button>
-          <button class="botonEliminar" id="botonEliminar"> Eliminar evento </button>
-        </div>
-        <h2 class="tituloEvento">Nombre del evento</h2>
-        <p class="descripcionEvento">Descripción del evento porque mola porque es la moda, survival vacation al poder. Working In Progress god cabron, me renta descargarme este juego loool que guapo que está dios. Está creado por los mismísmos dioses griegos </p>
+      <div class='evento'>
+          <div class='barraUsuario'>
+            <form action='/editar.php' method='post' >
+              <input type='hidden' name='titulo' value="prueba" />
+              <button class='botonEditar'> Editar </button>
+            </form>
+            <button class='botonEliminar'> Eliminar evento </button>
+          </div>
+          <h2 class='tituloEvento'>titulo</h2>
+          <p class='descripcionEvento'>enunciado</p>
       </div>
+      <script src="eliminarEvento.js"></script>
     </body>
 </html>
