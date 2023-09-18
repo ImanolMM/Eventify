@@ -30,7 +30,6 @@
         $query = mysqli_query($conn, "SELECT * FROM usuarios")
           or die (mysqli_error($conn));
         ?>
-
         <div class="formbox">
             <div class="form-title">
                 Crear evento
@@ -39,30 +38,30 @@
                 Construya su evento aqui
             </p>
             <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
-            <form class="form">
+            <form class="form" action="/submit_eventos.php" id="form-crear" method="POST">
                 <div class="linea-form">
                     <p>Titulo</p>
-                    <input type="text">
+                    <input type="text" name="titulo">
                 </div>
                 <div class="linea-form">
                     <p>Enunciado</p>
-                    <input type="text">
+                    <input type="text" name="enunciado">
                 </div>
                 <div class="linea-form">
                     <p>Opcion 1 </p>
-                    <input type="text">
+                    <input type="text" name="opcion1">
                 </div>
                 <div class="linea-form">
                     <p>Resultado 1</p>
-                    <input type="text">
+                    <input type="text" name="resultado1">
                 </div>
                 <div class="linea-form">
                     <p>Opcion 2</p>
-                    <input type="text">
+                    <input type="text" name="opcion2">
                 </div>
                 <div class="linea-form">
                     <p>Resultado 2</p>
-                    <input type="text">
+                    <input type="text" name="resultado2">
                 </div>
                 <button type="submit" class="boton">Crear</button>
             </form>
