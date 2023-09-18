@@ -12,17 +12,9 @@
     </head>
     <body>
     <script src="form.js"></script>
-    <div class="navbar">
-        <ul>
-          <li>
-            <a class="linkInicio" href="/">Inicio</a>
-            <a class="linkInicio" href="/crearEvento.php">Crear Evento</a>
-          </li>
-          <li>
-            <a class="linkLogin" href="/login.php">Login</a>
-          </li>
-        </ul>
-      </div>
+      <?php 
+        readfile("navbar.html");
+      ?>
       <div class="page">
         <?php
           $hostname = "db";
