@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>Eventify</title>
-        <link rel="stylesheet" href="crearEvento.css">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="perfil.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
         <!-- Fuente de letra roboto de Google  https://fonts.google.com/specimen/Roboto -->
@@ -14,6 +15,11 @@
         include("navbar.php");
       ?>
       <div class="page">
+        <div class="cabecera">
+          <img class="imagenSV" src="imagenes/logoSV.png"></img>
+          <h1 class="tituloInicio">Editar Evento</h1>
+          <img class="imagenWIP" src="imagenes/logoWIP.png"></img>
+        </div>
         <?php
           $hostname = "db";
           $username = "admin";
@@ -25,49 +31,59 @@
             die("Database connection failed: " . $conn->connect_error);
           }
 
+          if(isset($_COOKIE["user"])){
+            $usuario = $_COOKIE["user"];
+          }else{
+            $usuario = "invitado";
+          }
 
+          $titulo = $_POST['titulo'];
 
-        $query = mysqli_query($conn, "SELECT * FROM usuarios")
+          $query = mysqli_query($conn, "SELECT * FROM eventos WHERE titulo = '".$titulo."' ". "AND usuario = '".$usuario."'")
           or die (mysqli_error($conn));
+      
+          while ($row = mysqli_fetch_array($query)) {
+          echo '<div class="formbox">
+                  <div class="form-title">
+                      Mi Perfil
+                  </div>
+                  <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
+                  <form class="form" action="/submit_eventos.php" id="form-registro" method="POST">
+                      <div class="linea-form">
+                          <p>Titulo: '.$row['titulo'].'</p>
+                          <input type="text" name="titulo" value='.$row['titulo'].'>
+                          <input type="hidden" name="viejoTitulo" value='.$row['titulo'].'>
+                      </div>
+                      <div class="linea-form">
+                          <p>Teléfono: '.$row['enunciado'].'</p>
+                          <input type="text" name="enunciado" value='.$row['enunciado'].'>
+                      </div>
+                      <div class="linea-form">
+                          <p>DNI: '.$row['opcion1'].' </p>
+                          <input type="text" name="opcion1" value='.$row['opcion1'].'>
+                      </div>
+                      <div class="linea-form">
+                          <p>Email: '.$row['resultado1'].'</p>
+                          <input type="text" name="resultado1" value='.$row['resultado1'].'>
+                      </div>
+                      <div class="linea-form">
+                          <p>'.$row['opcion2'].'</p>
+                          <input type="text" name="opcion2" value='.$row['opcion2'].'>
+                      </div>
+                      <div class="linea-form">
+                          <p>Nombre de usuario: '.$row['resultado2'].'</p>
+                          <input type="text" name="resultado2" value='.$row['resultado2'].'>
+                      </div>
+                      <div class="linea-form">
+                          <input type="hidden" value="edit" name="flagedit">
+                          <p>
+                          <button type="submit" class="boton" id="botonRegistro">Editar</button>
+                          </p>                  
+                      </div>
+                  </form>
+              </div>';
+          }
         ?>
-
-        <div class="formbox">
-            <div class="form-title">
-                Editar evento
-            </div>
-            <p class="desc">
-                Construya su evento aqui
-            </p>
-            <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
-            <form class="form">
-                <div class="linea-form">
-                    <p>Titulo</p>
-                    <input type="text">
-                </div>
-                <div class="linea-form">
-                    <p>Enunciado</p>
-                    <input type="text">
-                </div>
-                <div class="linea-form">
-                    <p>Opcion 1 </p>
-                    <input type="text">
-                </div>
-                <div class="linea-form">
-                    <p>Resultado 1</p>
-                    <input type="text">
-                </div>
-                <div class="linea-form">
-                    <p>Opcion 2</p>
-                    <input type="text">
-                </div>
-                <div class="linea-form">
-                    <p>Resultado 2</p>
-                    <input type="text">
-                </div>
-                <button type="submit" class="boton">Editar</button>
-            </form>
-
-        </div>
       </div>
     </body>
 </html>

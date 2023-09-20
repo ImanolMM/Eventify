@@ -7,12 +7,14 @@
                 }else{
                     $usuario = "invitado";
                 }
+                $viejoTitulo = $_POST["viejoTitulo"];
                 $titulo = $_POST["titulo"];
                 $enunciado = $_POST["enunciado"];
                 $opcion1 = $_POST["opcion1"];
                 $resultado1 = $_POST["resultado1"];
                 $opcion2 = $_POST["opcion2"];
                 $resultado2 = $_POST["resultado2"];
+                $es_edit = $_POST["flagedit"];
 
                 $hostname = "db";
                 $username = "admin";
@@ -24,17 +26,28 @@
                 die("Database connection failed: " . $conn->connect_error);
                 }
 
-                $consulta = "INSERT INTO eventos VALUES(?, ?, ?, ?, ?, ?, ?)";
+                if($es_edit != "edit"){
+                    $consulta = "INSERT INTO eventos VALUES(?, ?, ?, ?, ?, ?, ?)";
                     $tipos = "sssssss";
-                    $parametros = array($usuario,$titulo , $enunciado, $opcion1, $resultado1, $opcion2, $resultado2);
-                    if($stmt = mysqli_prepare($conn, $consulta)){
-                            $stmt->bind_param($tipos, ...$parametros);
-                            $stmt->execute();
-                            $stmt->close();
-                            $mensaje = "Evento creado";
-                    }else{
-                        $mensaje = "error";
-                    }
+                    $parametros = array($usuario, $titulo , $enunciado, $opcion1, $resultado1, $opcion2, $resultado2);
+                    $mensaje = "Evento creado";
+
+                }else{
+                    $consulta = "UPDATE eventos SET titulo = ?, enunciado = ?, opcion1 = ?, resultado1 = ?, opcion2 = ?, resultado2 = ? WHERE titulo = ? AND usuario = ?";
+                    $tipos = "ssssssss";
+                    $parametros = array($titulo , $enunciado, $opcion1, $resultado1, $opcion2, $resultado2, $viejoTitulo, $usuario);
+                    $mensaje = "Evento editado";
+                }
+
+
+                if($stmt = mysqli_prepare($conn, $consulta)){
+                        $stmt->bind_param($tipos, ...$parametros);
+                        $stmt->execute();
+                        $stmt->close();
+                }else{
+                    $mensaje = "error";
+                }
+
              }
             ?>
 <!DOCTYPE html>

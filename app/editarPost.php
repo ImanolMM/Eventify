@@ -45,7 +45,8 @@
             echo "
             <div class='evento'>
                 <div class='barraUsuario'>
-                  <form action='editar.php' method='post' >
+                  <form action='/editar.php' method='POST' >
+                    <input name='titulo' type='hidden' value='".$row['titulo']."'>
                     <button class='botonEditar'> Editar </button>
                   </form>
                   <button class='botonEliminar'> Eliminar evento </button>
