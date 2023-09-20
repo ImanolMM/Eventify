@@ -16,6 +16,7 @@
       <div class="page">
       <div class="cabecera">
           <img class="imagenSV" src="imagenes/logoSV.png"></img>
+          <h1 class="tituloInicio">Inicio</h1>
           <img class="imagenWIP" src="imagenes/logoWIP.png"></img>
         </div>
         <?php
