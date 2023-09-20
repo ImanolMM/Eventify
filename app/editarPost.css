@@ -144,3 +144,12 @@ body{
 .botonEditar:hover{
     cursor: pointer;
 }
+
+.tituloInicio{
+    justify-self: center;
+    align-self: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--color2);
+    font-family: var(--font-family);
+}

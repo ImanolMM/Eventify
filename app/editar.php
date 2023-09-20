@@ -11,7 +11,7 @@
     </head>
     <body>
       <?php 
-        readfile("navbar.html");
+        include("navbar.php");
       ?>
       <div class="page">
         <?php

@@ -20,13 +20,18 @@ function init() {
       eventoPadre.remove();
       boton.remove();
 
+      // https://stackoverflow.com/questions/71678250/how-to-post-body-data-using-fetch-api
+
+      const urlencoded = new URLSearchParams({
+        "titulo": `${eventoPadre.querySelector('.tituloEvento').innerHTML}`,
+      });
+
       fetch('/eliminar_evento.php', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-        body: `titulo: ${eventoPadre.querySelector('.tituloEvento').innerHTML}`
-      })
+        body: urlencoded
+      }).then(response => response.text())
+      .then(text => console.log(text))
+      .catch(error => console.error(error));
 
     })
   })

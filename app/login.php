@@ -13,7 +13,7 @@
     <body>
     <script src="form.js"></script>
       <?php 
-        readfile("navbar.html");
+        include("navbar.php");
       ?>
       <div class="page">
         <?php
@@ -71,9 +71,9 @@
                     <input type="password" name="passwd">
                 </div>
                 <div class="linea-form">
-                  <input type="hidden" value="signup" name="tiporegistro">
+                  <input type="hidden" value="signin" name="tiporegistro">
                   <p>
-                    <button type="submit" class="boton" id="botonRegistro">Crear</button>
+                    <button type="submit" class="boton" id="botonRegistro">Realizar</button>
                   </p>                  
                   <button class="boton" id="botonIniciar">Cambiar a Crear cuenta</button>
                 </div>

@@ -1,8 +1,6 @@
 <?php
             // https://www.freecodecamp.org/news/creating-html-forms/
-            echo("alo");
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                echo "llega";
                 if(isset($_COOKIE["user"])){
                     $usuario = $_COOKIE["user"];
 
@@ -50,7 +48,7 @@
     </head>
     <body>
         <?php 
-            readfile("navbar.html");
+            include("navbar.php");
         ?>
         <div class="page mensaje">
             <?php

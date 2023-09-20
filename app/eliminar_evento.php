@@ -1,13 +1,13 @@
 <?php
-//edfoi
+    // https://www.freecodecamp.org/news/creating-html-forms/
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $titulo = $_POST["titulo"];
         if(isset($_COOKIE["user"])){
             $usuario = $_COOKIE["user"];
 
         }else{
             $usuario = "invitado";
         }
+        $titulo = $_POST["titulo"];
 
         $hostname = "db";
         $username = "admin";
@@ -19,14 +19,18 @@
         die("Database connection failed: " . $conn->connect_error);
         }
 
-        $consulta = "DELETE * FROM eventos WHERE titulo = ? AND usuario = ?";
+        $consulta = "DELETE FROM eventos WHERE titulo = ? AND usuario = ?";
         $tipos = "ss";
         $parametros = array($titulo, $usuario);
         if($stmt = mysqli_prepare($conn, $consulta)){
                 $stmt->bind_param($tipos, ...$parametros);
                 $stmt->execute();
                 $stmt->close();
+                $mensaje = "Evento eliminado"; // respuesta que recibirá el fetch de eliminarEvento.js
+        }else{
+            $mensaje = "error";
         }
-
+        $mensaje = $mensaje . " , titulo: " . $titulo;
+        echo $mensaje;
     }
 ?>

@@ -8,7 +8,7 @@
         $email = $_POST["email"];
         $nacimiento = $_POST["nacimiento"];
         $usuario = $_POST["usuario"];
-        $passwd = $_POST["passwd"];
+        $passwd = $_POST["passwd"]; // guardando contraseña sin encriptar :O
         $tipo = $_POST["tiporegistro"];
 
         $hostname = "db";
@@ -49,6 +49,8 @@
             $cookie_name = "user";
             $cookie_value = $usuario;
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
+            header("Location: /");
+            exit();
         }else{
             if($tipo == "signin"){
                 // iniciar sesión, comprobar contraseña
@@ -67,6 +69,23 @@
                     $cookie_name = "user";
                     $cookie_value = $usuario;
                     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
+                    header("Location: /");
+                    exit();
+                }
+                
+            }else if($tipo == "edit"){
+                if(isset($_COOKIE["user"])){
+                    $viejoUsuario = $_COOKIE["user"];
+
+                    $consulta = "UPDATE usuarios SET nombre = ?, telef = ?, dni = ?, email = ?, nacimiento = ?, usuario = ?, passwd = ? WHERE usuario = ?";
+                    $tipos = "sissssss";
+                    $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $usuario, $passwd, $viejoUsuario);
+                    if($stmt = mysqli_prepare($conn, $consulta)){
+                            $stmt->bind_param($tipos, ...$parametros);
+                            if($stmt->execute()) $mensaje = "Usuario editado";
+                            else $mensaje = "Error al editar";
+                            $stmt->close();
+                    }
                 }
                 
             }else{
@@ -76,7 +95,7 @@
         }
         
     }else{
-        header("/"); // redirigimos a inicio si no es POST
+        header("Location: /"); // redirigimos a inicio si no es POST
         exit();
     }
     ?>
@@ -91,7 +110,7 @@
     </head>
     <body>
         <?php 
-            readfile("navbar.html");
+            include("navbar.php");
         ?>
         <div class="page mensaje">
             <?php
