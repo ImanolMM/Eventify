@@ -1,4 +1,5 @@
 <?php
+//
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $titulo = $_POST["titulo"];
         if(isset($_COOKIE["user"])){
