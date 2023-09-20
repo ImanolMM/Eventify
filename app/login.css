@@ -75,3 +75,24 @@
 .boton:hover{
     cursor: pointer;
 }
+
+#linea-telefono{
+    display: none;
+}
+
+#linea-nombre{
+    display: none;
+}
+
+#linea-dni{
+    display: none;
+}
+
+#linea-email{
+    display: none;
+}
+
+#linea-nacimiento{
+    display: none;
+}
+

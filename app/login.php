@@ -35,7 +35,7 @@
 
         <div class="formbox">
             <div class="form-title">
-                Registro
+                Iniciar sesión
             </div>
             <p class="desc">
                 A continuación se muestran ejemplos para cada campo
@@ -75,7 +75,7 @@
                   <p>
                     <button type="submit" class="boton" id="botonRegistro">Crear</button>
                   </p>                  
-                  <button class="boton" id="botonIniciar">Cambiar a Iniciar sesión</button>
+                  <button class="boton" id="botonIniciar">Cambiar a Crear cuenta</button>
                 </div>
               </form>
 

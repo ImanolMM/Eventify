@@ -53,8 +53,10 @@ function init() {
         var email = document.getElementById("linea-email")
         var nacimiento = document.getElementById("linea-nacimiento")
         var tipo = document.getElementsByName("tiporegistro")[0]
+        var titulo = document.getElementsByClassName("form-title")[0]
         
         if(botonSesion.innerHTML === "Cambiar a Iniciar sesión"){
+            titulo.innerHTML = "Iniciar sesión"
             botonSesion.innerHTML = "Cambiar a Crear cuenta"
             nombre.style.display = "none"
             telefono.style.display = "none"
@@ -63,6 +65,7 @@ function init() {
             nacimiento.style.display = "none"
             tipo.value = "signin" // iniciar sesión
         }else{
+            titulo.innerHTML = "Registro"
             botonSesion.innerHTML = "Cambiar a Iniciar sesión"
             nombre.style.display = "table-row"
             telefono.style.display = "table-row"
