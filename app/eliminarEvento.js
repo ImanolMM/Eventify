@@ -23,11 +23,9 @@ function init() {
       fetch('/eliminar_evento.php', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'multipart/form-data'
         },
-        body: JSON.stringify({
-          titulo: eventoPadre.querySelector('.tituloEvento').innerHTML
-        })
+        body: `titulo: ${eventoPadre.querySelector('.tituloEvento').innerHTML}`
       })
 
     })
