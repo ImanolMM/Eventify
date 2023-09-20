@@ -1,5 +1,4 @@
 <?php
-    // printf "host=github.com\nprotocol=https\nusername=Dnidof" | git credential-$(git config --global credential.helper) get
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $titulo = $_POST["titulo"];
         if(isset($_COOKIE["user"])){
