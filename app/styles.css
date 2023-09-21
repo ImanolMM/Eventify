@@ -137,7 +137,6 @@ body{
       'opsz' 24;
     font-size: 36px;
     align-self: center;
-    color: white;
     text-decoration: none;
 }
 .links {
@@ -145,4 +144,8 @@ body{
     align-items: center;
     justify-content: center; 
     margin-left: 10px;
+}
+
+.blanco{
+    color: white;
 }
