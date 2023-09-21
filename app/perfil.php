@@ -79,13 +79,14 @@
                         <div class="linea-form">
                             <input type="hidden" value="edit" name="tiporegistro">
                             <p>
-                            <button type="submit" class="boton" id="botonRegistro">Editar</button>
+                            <button type="submit" class="boton" id="botonPerfil">Editar</button>
                             </p>                  
                         </div>
                     </form>
                 </div>';
             }
             ?>
+            <script src="perfil.js"></script>
       </div>
     </body>
 </html>

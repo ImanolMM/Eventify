@@ -1,9 +1,7 @@
-window.onload = init
-// https://stackoverflow.com/q/8935632 comprobar números
-// https://stackoverflow.com/q/9862761 comprobar letras
-function init() {
-    var boton = document.getElementById("botonRegistro")
-    boton.addEventListener("click", () => {
+window.onload = init 
+
+function init(){
+    document.getElementById("botonPerfil").addEventListener("click", () => {
         event.preventDefault();
         var aceptado = true
         var nombre = document.getElementsByName("nombre")[0]?.value
@@ -14,17 +12,15 @@ function init() {
         var usuario = document.getElementsByName("usuario")[0]?.value
         var passwd = document.getElementsByName("passwd")[0]?.value
 
-        if(document.getElementById("botonIniciar").innerHTML !== "Cambiar a Crear cuenta"){
-            aceptado = aceptado && comprobarNombre(nombre)
+        aceptado = aceptado && comprobarNombre(nombre)
 
-            aceptado = aceptado && comprobarTelefono(telefono)
+        aceptado = aceptado && comprobarTelefono(telefono)
 
-            aceptado = aceptado && validarDNI(dni)
+        aceptado = aceptado && validarDNI(dni)
 
-            aceptado = aceptado && comprobarEmail(email)
+        aceptado = aceptado && comprobarEmail(email)
 
-            aceptado = aceptado && comprobarNacimiento(nacimiento)
-        }
+        aceptado = aceptado && comprobarNacimiento(nacimiento)
         
 
         aceptado = aceptado && comprobarUsuario(usuario)
@@ -32,40 +28,6 @@ function init() {
         if(aceptado){
             var form = document.getElementById("form-registro")
             form.submit()
-        }
-    })
-
-    var botonSesion = document.getElementById("botonIniciar")
-    botonSesion.addEventListener("click", () => {
-        event.preventDefault()
-
-        var nombre = document.getElementById("linea-nombre")
-        var telefono = document.getElementById("linea-telefono")
-        var dni = document.getElementById("linea-dni")
-        var email = document.getElementById("linea-email")
-        var nacimiento = document.getElementById("linea-nacimiento")
-        var tipo = document.getElementsByName("tiporegistro")[0]
-        var titulo = document.getElementsByClassName("form-title")[0]
-        
-        if(botonSesion.innerHTML === "Cambiar a Iniciar sesión"){
-            titulo.innerHTML = "Iniciar sesión"
-            botonSesion.innerHTML = "Cambiar a Crear cuenta"
-            nombre.style.display = "none"
-            telefono.style.display = "none"
-            dni.style.display = "none"
-            email.style.display = "none"
-            nacimiento.style.display = "none"
-            tipo.value = "signin" // iniciar sesión
-        }else{
-            titulo.innerHTML = "Registro"
-            botonSesion.innerHTML = "Cambiar a Iniciar sesión"
-            nombre.style.display = "table-row"
-            telefono.style.display = "table-row"
-            dni.style.display = "table-row"
-            email.style.display = "table-row"
-            nacimiento.style.display = "table-row"
-            tipo.value = "signup" // Crear cuenta
-            
         }
     })
 }
@@ -157,6 +119,3 @@ function validarDNI(dni) {
     }
     return letra === letraCalculada;
   }
-  
-
-

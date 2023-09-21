@@ -9,30 +9,33 @@ function init() {
 
       event.preventDefault();
  
-      //acceso a la base de datos
+      if(confirm("¿Seguro que quiere eliminar el evento?")){
+        const eventoPadre = boton.parentElement.parentElement;
+
+      
+      
+        console.log(eventoPadre)      
+  
+        eventoPadre.remove();
+        boton.remove();
+  
+        // https://stackoverflow.com/questions/71678250/how-to-post-body-data-using-fetch-api
+  
+        const urlencoded = new URLSearchParams({
+          "titulo": `${eventoPadre.querySelector('.tituloEvento').innerHTML}`,
+        });
+  
+        fetch('/eliminar_evento.php', {
+          method: 'POST',
+          body: urlencoded
+        }).then(response => response.text())
+        .then(text => console.log(text))
+        .catch(error => console.error(error));  
+      }
  
-      const eventoPadre = boton.parentElement.parentElement;
 
-      
-      
-      console.log(eventoPadre)      
-
-      eventoPadre.remove();
-      boton.remove();
-
-      // https://stackoverflow.com/questions/71678250/how-to-post-body-data-using-fetch-api
-
-      const urlencoded = new URLSearchParams({
-        "titulo": `${eventoPadre.querySelector('.tituloEvento').innerHTML}`,
-      });
-
-      fetch('/eliminar_evento.php', {
-        method: 'POST',
-        body: urlencoded
-      }).then(response => response.text())
-      .then(text => console.log(text))
-      .catch(error => console.error(error));
 
     })
   })
+
 }

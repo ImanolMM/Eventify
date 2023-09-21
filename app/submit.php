@@ -33,7 +33,7 @@
         }
 
         // https://www.php.net/manual/es/mysqli.prepare.php en los comentarios, el de urso
-        if(!$existeUsuario){
+        if($tipo == "signup" && !$existeUsuario){
 
             $consulta = "INSERT INTO usuarios VALUES(?, ?, ?, ?, ?, ?, ?)";
             $tipos = "sisssss";
@@ -71,7 +71,10 @@
                     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
                     header("Location: /");
                     exit();
+                }else{
+                    $mensaje = "Usuario o contraseña incorrecta";
                 }
+                
                 
             }else if($tipo == "edit"){
                 if(isset($_COOKIE["user"])){
