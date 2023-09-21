@@ -3,9 +3,9 @@
   // https://stackoverflow.com/questions/8450696/execute-a-php-script-from-another-php-script
   
   if(isset($_COOKIE["user"])){
-    $perfil = '<a href="/perfil.php" class="material-symbols-outlined">account_circle</a>';
+    $perfil = '<a href="/perfil.php" class="material-symbols-outlined blanco">account_circle</a>';
     //cambiar el href de abajo para que redirija a logout.php
-    $logOut = '<a href="logout.php"class="material-symbols-outlined">logout</a>';
+    $logOut = '<a href="logout.php"class="material-symbols-outlined blanco">logout</a>';
   }else{
     $perfil = '<a class="linkLogin" href=/login.php>Iniciar sesión</a>';
     $textoPerfil = "";
