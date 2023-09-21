@@ -12,6 +12,12 @@
   }
   $navbar = '
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Fuente de letra roboto de Google  https://fonts.google.com/specimen/Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Iconos de Google  https://developers.google.com/fonts/docs/material_icons?hl=es-419 -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <div class="navbar">
   <ul>
     <div class="links">
