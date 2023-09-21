@@ -8,6 +8,7 @@
         <!-- Fuente de letra roboto de Google  https://fonts.google.com/specimen/Roboto -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
     <body>
       <?php 
@@ -38,7 +39,8 @@
             echo "
             <div class='evento'>
                 <div class='barraUsuario'>
-                    <img class='imagenUsuarioEvento' src='imagenes/profilePicture.png'></img>
+                    <!-- <img class='imagenUsuarioEvento' src='imagenes/profilePicture.png'></img> -->
+                    <span class='material-symbols-outlined'> account_circle</span>
                     <p class='nombreUsuarioEvento'>{$row['usuario']}</p>
                 </div>
                 <h2 class='tituloEvento'>{$row['titulo']}</h2>

@@ -46,7 +46,7 @@ body{
 
 }
 .page{
-    margin: 60px 10px;
+    margin: 72px 10px;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-evenly;
@@ -129,3 +129,18 @@ body{
     color: var(--color2);
     font-family: var(--font-family);
 }
+.material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 100,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+    font-size: 36px;
+    align-self: center;
+}
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-left: 10px;
+  }
