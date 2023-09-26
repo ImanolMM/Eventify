@@ -149,3 +149,9 @@ body{
 .blanco{
     color: white;
 }
+.botonDescarga{
+    align-self: self-end;
+}
+.botonDescarga:hover{
+    cursor: pointer;
+}
