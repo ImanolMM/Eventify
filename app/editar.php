@@ -46,7 +46,7 @@
           while ($row = mysqli_fetch_array($query)) {
           echo '<div class="formbox">
                   <div class="form-title">
-                      Mi Perfil
+                      Edición de evento
                   </div>
                   <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
                   <form class="form" action="/submit_eventos.php" id="form-registro" method="POST">
@@ -56,23 +56,23 @@
                           <input type="hidden" name="viejoTitulo" value='.$row['titulo'].'>
                       </div>
                       <div class="linea-form">
-                          <p>Teléfono: '.$row['enunciado'].'</p>
+                          <p>Enunciado: '.$row['enunciado'].'</p>
                           <input type="text" name="enunciado" value='.$row['enunciado'].'>
                       </div>
                       <div class="linea-form">
-                          <p>DNI: '.$row['opcion1'].' </p>
+                          <p>Opcion1: '.$row['opcion1'].' </p>
                           <input type="text" name="opcion1" value='.$row['opcion1'].'>
                       </div>
                       <div class="linea-form">
-                          <p>Email: '.$row['resultado1'].'</p>
+                          <p>Resultado1: '.$row['resultado1'].'</p>
                           <input type="text" name="resultado1" value='.$row['resultado1'].'>
                       </div>
                       <div class="linea-form">
-                          <p>'.$row['opcion2'].'</p>
+                          <p>Opcion2: '.$row['opcion2'].'</p>
                           <input type="text" name="opcion2" value='.$row['opcion2'].'>
                       </div>
                       <div class="linea-form">
-                          <p>Nombre de usuario: '.$row['resultado2'].'</p>
+                          <p>Resultado2: '.$row['resultado2'].'</p>
                           <input type="text" name="resultado2" value='.$row['resultado2'].'>
                       </div>
                       <div class="linea-form">
