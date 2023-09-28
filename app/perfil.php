@@ -65,7 +65,7 @@
                             <input type="email" name="email" value='.$row['email'].'>
                         </div>
                         <div class="linea-form">
-                            <p>'.$row['nacimiento'].'</p>
+                            <p>Nacimiento: '.$row['nacimiento'].'</p>
                             <input type="date" name="nacimiento" value='.$row['nacimiento'].'>
                         </div>
                         <div class="linea-form">
