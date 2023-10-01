@@ -155,7 +155,7 @@ body{
     color: white;
 }
 .botonDescarga{
-    align-self: self-end;
+    margin-left: 90%;
 }
 .botonDescarga:hover{
     cursor: pointer;
