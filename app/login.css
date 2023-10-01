@@ -10,6 +10,10 @@
     margin: 0 auto;
 }
 
+.desc{
+    display: none;
+}
+
 .form{
     height: 100%;
     display: table;

@@ -112,8 +112,8 @@ body{
     align-self: center;
 }
 .tituloEvento{
-    text-align: center;
-    margin-top: 0px;
+    max-width: 70%;
+    margin: 0 auto;
 }
 .nombreUsuarioEvento{
     margin-left: 10px;
@@ -153,3 +153,4 @@ body{
     color: var(--color2);
     font-family: var(--font-family);
 }
+

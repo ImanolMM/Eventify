@@ -40,9 +40,9 @@
             <div class='evento'>
                 <div class='barraUsuario'>
                   <span class='material-symbols-outlined'> account_circle</span>
-                  <p class='nombreUsuarioEvento'>{$row['usuario']}</p>
+                  <p class='nombreUsuarioEvento no-overflow'>{$row['usuario']}</p>
                 </div>
-                <h2 class='tituloEvento'>{$row['titulo']}</h2>
+                <h2 class='tituloEvento no-overflow'>{$row['titulo']}</h2>
                 <p class='descripcionEvento'>{$row['enunciado']}</p>
                 <span class='material-symbols-outlined botonDescarga'> download</span>
                 <!--chapuza-->

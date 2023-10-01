@@ -24,10 +24,14 @@
     height: 100%;
     display: table;
     margin: 0 auto;
+    table-layout: fixed;
 }
 
 .form p{
     display: table-cell;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 60%;
 }
 
 .form input{

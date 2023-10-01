@@ -63,11 +63,11 @@
                     <input type="date" name="nacimiento">
                 </div>
                 <div class="linea-form">
-                    <p>Nombre de usuario: JonTom123</p>
+                    <p id="usuario-texto">Nombre de usuario:</p>
                     <input type="text" name="usuario">
                 </div>
                 <div class="linea-form">
-                    <p>Contraseña: asd$27</p>
+                    <p id="passwd-texto">Contraseña:</p>
                     <input type="password" name="passwd">
                 </div>
                 <div class="linea-form">

@@ -85,7 +85,10 @@
                     $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $usuario, $passwd, $viejoUsuario);
                     if($stmt = mysqli_prepare($conn, $consulta)){
                             $stmt->bind_param($tipos, ...$parametros);
-                            if($stmt->execute()) $mensaje = "Usuario editado";
+                            if($stmt->execute()){
+                                $mensaje = "Usuario editado";
+                                setcookie("user", $usuario, time() + (86400 * 30), "/");
+                            } 
                             else $mensaje = "Error al editar";
                             $stmt->close();
                     }

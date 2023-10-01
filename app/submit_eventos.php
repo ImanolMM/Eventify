@@ -48,6 +48,9 @@
                     $mensaje = "error";
                 }
 
+             }else{
+                header("Location: /"); // Redirigimos a inicio si no es post
+                exit();
              }
             ?>
 <!DOCTYPE html>

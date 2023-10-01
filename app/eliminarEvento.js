@@ -10,11 +10,7 @@ function init() {
       event.preventDefault();
  
       if(confirm("¿Seguro que quiere eliminar el evento?")){
-        const eventoPadre = boton.parentElement.parentElement;
-
-      
-      
-        console.log(eventoPadre)      
+        const eventoPadre = boton.parentElement.parentElement;  
   
         eventoPadre.remove();
         boton.remove();

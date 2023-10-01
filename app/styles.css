@@ -113,13 +113,18 @@ body{
 }
 .tituloEvento{
     text-align: center;
-    margin-top: 0px;
+    max-width: 70%;
+    margin: 0 auto;
 }
 .nombreUsuarioEvento{
     margin-left: 10px;
+    max-width: 70%;
 }
 .descripcionEvento{
     margin: 20px 100px 20px 100px;
+    max-width: 70%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .tituloInicio{
     justify-self: center;
@@ -154,4 +159,10 @@ body{
 }
 .botonDescarga:hover{
     cursor: pointer;
+}
+
+.no-overflow{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

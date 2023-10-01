@@ -25,6 +25,8 @@ function init(){
 
         aceptado = aceptado && comprobarUsuario(usuario)
 
+        aceptado = aceptado && comprobarPasswd(passwd)
+
         if(aceptado){
             var form = document.getElementById("form-registro")
             form.submit()
@@ -118,4 +120,13 @@ function validarDNI(dni) {
         alert("La letra del DNI no es correcta")
     }
     return letra === letraCalculada;
+  }
+
+  function comprobarPasswd(passwd){
+    if(passwd.length > 0){
+        return true
+    }else{
+        alert("El campo de la contraseña no puede estar vacío")
+        return false
+    }
   }

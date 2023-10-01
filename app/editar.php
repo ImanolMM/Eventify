@@ -52,7 +52,7 @@
                   <form class="form" action="/submit_eventos.php" id="form-registro" method="POST">
                       <div class="linea-form">
                           <p>Titulo: '.$row['titulo'].'</p>
-                          <input type="text" name="titulo" value='.$row['titulo'].'>
+                          <input type="text" name="titulo no-overflow" value='.$row['titulo'].'>
                           <input type="hidden" name="viejoTitulo" value='.$row['titulo'].'>
                       </div>
                       <div class="linea-form">

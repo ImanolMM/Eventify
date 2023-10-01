@@ -52,8 +52,8 @@
                   </form>
                   <button class='botonEliminar'> Eliminar evento </button>
                 </div>
-                <h2 class='tituloEvento'>{$row['titulo']}</h2>
-                <p class='descripcionEvento'>{$row['enunciado']}</p>
+                <h2 class='tituloEvento no-overflow'>{$row['titulo']}</h2>
+                <p class='descripcionEvento no-overflow'>{$row['enunciado']}</p>
             </div>
             ";
           }

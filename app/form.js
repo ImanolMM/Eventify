@@ -24,6 +24,8 @@ function init() {
             aceptado = aceptado && comprobarEmail(email)
 
             aceptado = aceptado && comprobarNacimiento(nacimiento)
+
+            aceptado = aceptado && comprobarPasswd(passwd)
         }
         
 
@@ -46,9 +48,15 @@ function init() {
         var nacimiento = document.getElementById("linea-nacimiento")
         var tipo = document.getElementsByName("tiporegistro")[0]
         var titulo = document.getElementsByClassName("form-title")[0]
+        var usuario = document.getElementById("usuario-texto")
+        var passwd = document.getElementById("passwd-texto")
+        var desc = document.getElementsByClassName("desc")[0]
         
         if(botonSesion.innerHTML === "Cambiar a Iniciar sesión"){
             titulo.innerHTML = "Iniciar sesión"
+            desc.style.display = "none"
+            usuario.innerHTML = "Nombre de usuario:"
+            passwd.innerHTML = "Contraseña:"
             botonSesion.innerHTML = "Cambiar a Crear cuenta"
             nombre.style.display = "none"
             telefono.style.display = "none"
@@ -58,7 +66,10 @@ function init() {
             tipo.value = "signin" // iniciar sesión
         }else{
             titulo.innerHTML = "Registro"
+            desc.style.display = "block"
             botonSesion.innerHTML = "Cambiar a Iniciar sesión"
+            usuario.innerHTML = "Nombre de usuario: JonTom123"
+            passwd.innerHTML = "Contraseña: asd$27"
             nombre.style.display = "table-row"
             telefono.style.display = "table-row"
             dni.style.display = "table-row"
@@ -158,5 +169,14 @@ function validarDNI(dni) {
     return letra === letraCalculada;
   }
   
+
+  function comprobarPasswd(passwd){
+    if(passwd.length > 0){
+        return true
+    }else{
+        alert("El campo de la contraseña no puede estar vacío")
+        return false
+    }
+  }
 
 
