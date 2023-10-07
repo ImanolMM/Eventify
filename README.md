@@ -1,3 +1,5 @@
+# integrantes
+Imanol Martínez, Mikel Rivera, Diego Nido, Unax Zardoya
 
 # Docker LAMP
 Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enabled by default.
@@ -6,7 +8,7 @@ Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enable
 
 Enter the following command to start your containers:
 ```bash
-$ docker-compose up -d
+$ docker-compose up
 ```
 
 To stop them, use this:
