@@ -1,0 +1,106 @@
+.formbox{
+    margin-top: 30px;
+    background-color: var(--color1);
+    border-radius: 20px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.404);
+    width: 40%;
+    min-width: 400px;
+    height: fit-content;
+    padding: 30px 40px;
+    margin: 0 auto;
+}
+
+.desc{
+    display: none;
+}
+
+.form{
+    height: 100%;
+    display: table;
+}
+
+.formbox .desc{
+    text-align: center;
+    font-family: var(--font-family);
+}
+
+.form p{
+    display: table-cell;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.form input{
+    display: table-cell;
+    white-space: nowrap;
+    height: 50%;
+}
+
+.form-title{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    width: fit-content;
+    border-radius: 10px;
+    color: var(--text-color);
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-color: var(--color2);
+    padding: 10px;
+}
+
+.linea-form{
+    display: table-row;
+}
+
+.linea-form p{
+    font-family: var(--font-family);
+    padding: 20px 0;
+}
+
+.link{
+    text-decoration: none;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.boton{
+    border-radius: 10px;
+    background-color: var(--color2);
+    font-family: var(--font-family);
+    color: var(--color1);
+    border: none;
+    font-size: 25px;
+    display: table-cell;
+}
+
+.botones{
+    width: 100%;
+    display: table-row;
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+#linea-telefono{
+    display: none;
+}
+
+#linea-nombre{
+    display: none;
+}
+
+#linea-dni{
+    display: none;
+}
+
+#linea-email{
+    display: none;
+}
+
+#linea-nacimiento{
+    display: none;
+}
+

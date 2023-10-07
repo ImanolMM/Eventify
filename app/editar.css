@@ -1,0 +1,129 @@
+:root{
+    --color1: #ffff;
+    --color2: rgba(243,146,3);
+    --text-color: #ffff;
+    --font-family: 'Roboto', sans-serif;
+}
+
+.formbox{
+    margin-top: 30px;
+    background-color: var(--color1);
+    border-radius: 20px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.404);
+    width: 600px;
+    height: fit-content;
+    padding: 30px 0;
+}
+
+.formbox .desc{
+    text-align: center;
+    font-family: var(--font-family);
+}
+
+.form{
+    height: 100%;
+    display: table;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+
+.form p{
+    display: table-cell;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 60%;
+}
+
+.form input{
+    display: table-cell;
+    height: 30%;
+}
+
+.form-title{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    width: fit-content;
+    border-radius: 10px;
+    color: var(--text-color);
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-color: var(--color2);
+    padding: 10px;
+}
+
+.linea-form{
+    display: table-row;
+}
+
+.linea-form p{
+    font-family: var(--font-family);
+    padding: 30px 0;
+    margin-right: 5px;
+}
+
+.link{
+    text-decoration: none;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.genero{
+    width: 40%;
+}
+
+.boton{
+    border-radius: 10px;
+    background-color: var(--color2);
+    font-family: var(--font-family);
+    color: var(--color1);
+    border: none;
+    font-size: 25px;
+}
+.navbar{
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: var(--color2);
+    width: 100%;
+
+}
+
+
+.navbar ul li{
+    margin: 0 20px;
+    display: inline-block;
+}
+.navbar ul{
+    padding-left: 0%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.linkInicio{
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-family: var(--font-family);
+    margin-right: 25px;
+}
+
+.linkLogin{
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-family: var(--font-family);
+    margin-left:10px;
+
+}
+body{
+    margin: 0 0;
+}
+.page{
+    margin: 60px 10px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}

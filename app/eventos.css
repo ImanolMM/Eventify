@@ -1,0 +1,80 @@
+:root{
+    --color1: #ffff;
+    --color2: rgba(243,146,3);
+    --text-color: #ffff;
+    --font-family: 'Roboto', sans-serif;
+}
+
+body{
+    margin: 0 0;
+}
+
+.navbar{
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: var(--color2);
+    width: 100%;
+
+}
+
+
+.navbar ul li{
+    margin: 0 20px;
+    display: inline-block;
+}
+.navbar ul{
+    padding-left: 0%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.linkInicio{
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-family: var(--font-family);
+    margin-right: 25px;
+}
+
+.linkLogin{
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-family: var(--font-family);
+    margin-left:10px;
+
+}
+.page{
+    margin: 60px 10px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.cabecera{
+    top: 0;
+    left: 0;
+    background-color: #FEEB61;
+    width: 100%;
+    height: 200px;
+    padding-left: 0%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.imagenSV{
+    height: 100%;
+    
+}
+.titulo{
+    
+    font-size: 150px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.imagenWIP{
+    height: 100%;
+    border-radius: 50%;
+}

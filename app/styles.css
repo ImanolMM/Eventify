@@ -1,0 +1,168 @@
+:root{
+    --color1: #ffff;
+    --color2: rgba(243,146,3);
+    --text-color: #ffff;
+    --font-family: 'Roboto', sans-serif;
+}
+
+body{
+    margin: 0 0;
+}
+
+.navbar{
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: var(--color2);
+    width: 100%;
+
+}
+
+
+.navbar ul li{
+    margin: 0 20px;
+    display: inline-block;
+}
+.navbar ul{
+    padding-left: 0%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.linkInicio{
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-family: var(--font-family);
+    margin-right: 25px;
+}
+
+.linkLogin{
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-family: var(--font-family);
+    margin-left:10px;
+
+}
+.page{
+    margin: 72px 10px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.cabecera{
+    top: 0;
+    left: 0;
+    background-color: #FEEB61;
+    width: 100%;
+    height: 200px;
+    padding-left: 0%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.cabecera{
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    height: 200px;
+    padding-left: 0%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+}
+
+.imagenSV{
+    height: 100%;
+    
+}
+.imagenWIP{
+    margin-top: 5px;
+    height: 90%;
+    border-radius: 50%;
+}
+
+.evento{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px ;
+    background-color: var(--color1);
+    border-radius: 20px;
+    box-shadow: 0 0 20px 1px var(--color2);
+    border: 1px solid var(--color2);
+    margin-bottom: 25px;
+}
+.barraUsuario{
+    display: flex;
+    width: 100%;
+}
+.imagenUsuarioEvento{
+    margin-left: 20px;
+    width: 30px;
+    align-self: center;
+}
+.tituloEvento{
+    text-align: center;
+    max-width: 70%;
+    margin: 0 auto;
+}
+.nombreUsuarioEvento{
+    margin-left: 10px;
+    max-width: 70%;
+}
+.descripcionEvento{
+    margin: 20px 100px 20px 100px;
+    max-width: 70%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.tituloInicio{
+    justify-self: center;
+    align-self: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--color2);
+    font-family: var(--font-family);
+}
+.material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 100,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+    font-size: 36px;
+    align-self: center;
+    text-decoration: none;
+}
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-left: 10px;
+}
+
+.blanco{
+    color: white;
+}
+.botonDescarga{
+    margin-left: 90%;
+}
+.botonDescarga:hover{
+    cursor: pointer;
+}
+
+.no-overflow{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

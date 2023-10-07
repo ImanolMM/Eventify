@@ -1,0 +1,6 @@
+.mensaje{
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 2vw;
+    color: var(--color2);
+}
