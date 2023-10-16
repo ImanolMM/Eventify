@@ -6,15 +6,22 @@ Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enable
 
 ## Instructions
 
+If this is the first time you are using this, you must build "web" (docker image) first
+```bash
+$ docker build -t="web" .
+```
+
 Enter the following command to start your containers:
 ```bash
-$ docker-compose up
+$ docker-compose up -d
 ```
 
 To stop them, use this:
 ```bash
 $ docker-compose stop
 ```
+
+The database.sql file will be imported when you create the containers for the first time.
 
 Feel free to make pull requests and help to improve this.
 
