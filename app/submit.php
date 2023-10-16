@@ -86,8 +86,19 @@
                     if($stmt = mysqli_prepare($conn, $consulta)){
                             $stmt->bind_param($tipos, ...$parametros);
                             if($stmt->execute()){
+
                                 $mensaje = "Usuario editado";
                                 setcookie("user", $usuario, time() + (86400 * 30), "/");
+
+                                // editamos sus eventos
+                                $consulta = "UPDATE eventos SET usuario = ? WHERE usuario = ?";
+                                $tipos = "ss";
+                                $parametros = array($usuario, $viejoUsuario);
+
+                                if($stmt = mysqli_prepare($conn, $consulta)){
+                                    $stmt->bind_param($tipos, ...$parametros);
+                                    $stmt->execute();
+                                }
                             } 
                             else $mensaje = "Error al editar";
                             $stmt->close();
