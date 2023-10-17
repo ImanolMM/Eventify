@@ -23,6 +23,4 @@ $ docker-compose stop
 
 The database.sql file will be imported when you create the containers for the first time.
 
-Feel free to make pull requests and help to improve this.
-
 If you are looking for phpMyAdmin, take a look at [this](https://github.com/celsocelante/docker-lamp/issues/2).
