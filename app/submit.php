@@ -1,4 +1,5 @@
 <?php
+    //cambiar database.sql, poner on update cascade
     // https://www.freecodecamp.org/news/creating-html-forms/
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
