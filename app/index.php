@@ -46,10 +46,10 @@
                 <p class='descripcionEvento'>{$row['enunciado']}</p>
                 <span class='material-symbols-outlined botonDescarga'> download</span>
                 <!--chapuza-->
-                <input type='hidden' class='opcion1' value='{$row['opcion1']}'>
-                <input type='hidden' class='resultado1' value='{$row['resultado1']}'>
-                <input type='hidden' class='opcion2' value='{$row['opcion2']}'>
-                <input type='hidden' class='resultado2' value='{$row['resultado2']}'>
+                <input type='hidden' class='opcion1' value='".htmlspecialchars($row['opcion1'], ENT_QUOTES)."'>
+                <input type='hidden' class='resultado1' value='".htmlspecialchars($row['resultado1'], ENT_QUOTES)."'>
+                <input type='hidden' class='opcion2' value='".htmlspecialchars($row['opcion2'], ENT_QUOTES)."'>
+                <input type='hidden' class='resultado2' value='".htmlspecialchars($row['resultado2'], ENT_QUOTES)."'>
             </div>
             ";
           }

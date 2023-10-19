@@ -52,28 +52,28 @@
                   <form class="form" action="/submit_eventos.php" id="form-registro" method="POST">
                       <div class="linea-form">
                           <p>Titulo: '.$row['titulo'].'</p>
-                          <input type="text" name="titulo" value="'.$row['titulo'].'">
-                          <input type="hidden" name="viejoTitulo" value="'.$row['titulo'].'">
+                          <input type="text" name="titulo" value="'.htmlspecialchars($row['titulo'], ENT_QUOTES).'">
+                          <input type="hidden" name="viejoTitulo" value="'.htmlspecialchars($row['titulo'], ENT_QUOTES).'">
                       </div>
                       <div class="linea-form">
                           <p>Enunciado: '.$row['enunciado'].'</p>
-                          <input type="text" name="enunciado" value="'.$row['enunciado'].'">
+                          <input type="text" name="enunciado" value="'.htmlspecialchars($row['enunciado'], ENT_QUOTES).'">
                       </div>
                       <div class="linea-form">
                           <p>Opcion1: '.$row['opcion1'].' </p>
-                          <input type="text" name="opcion1" value="'.$row['opcion1'].'">
+                          <input type="text" name="opcion1" value="'.htmlspecialchars($row['opcion1'], ENT_QUOTES).'">
                       </div>
                       <div class="linea-form">
                           <p>Resultado1: '.$row['resultado1'].'</p>
-                          <input type="text" name="resultado1" value="'.$row['resultado1'].'">
+                          <input type="text" name="resultado1" value="'.htmlspecialchars($row['resultado1'], ENT_QUOTES).'">
                       </div>
                       <div class="linea-form">
                           <p>Opcion2: '.$row['opcion2'].'</p>
-                          <input type="text" name="opcion2" value="'.$row['opcion2'].'">
+                          <input type="text" name="opcion2" value="'.htmlspecialchars($row['opcion2'], ENT_QUOTES).'">
                       </div>
                       <div class="linea-form">
                           <p>Resultado2: '.$row['resultado2'].'</p>
-                          <input type="text" name="resultado2" value="'.$row['resultado2'].'">
+                          <input type="text" name="resultado2" value="'.htmlspecialchars($row['resultado2'], ENT_QUOTES).'">
                       </div>
                       <div class="linea-form">
                           <input type="hidden" value="edit" name="flagedit">

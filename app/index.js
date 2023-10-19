@@ -9,7 +9,7 @@ botonesDescarga.forEach(boton => {
         const resultado1 = boton.parentElement.querySelector('.resultado1').value;
         const resultado2 = boton.parentElement.querySelector('.resultado2').value;
         const texto = 'Título: ' +  titulo + '\n' + 'Descripción: ' + boton.parentElement.querySelector('.descripcionEvento').innerText
-        + '\n' + 'Opción 1: ' + opcion1 + '\n' + 'Resultado 1: ' + resultado1 + '\n' + 'Opcion 2: ' + opcion1 + '\n' + 'Resultado 2: ' + resultado2;
+        + '\n' + 'Opción 1: ' + opcion1 + '\n' + 'Resultado 1: ' + resultado1 + '\n' + 'Opcion 2: ' + opcion2 + '\n' + 'Resultado 2: ' + resultado2;
         
         var element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(texto));

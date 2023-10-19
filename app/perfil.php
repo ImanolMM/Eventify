@@ -73,7 +73,7 @@
                         </div>
                         <div class="linea-form">
                             <p>Contraseña: '.$row['passwd'].' </p>
-                            <input type="password" name="passwd" value="'.$row['passwd'].'">
+                            <input type="password" name="passwd" value="'.htmlspecialchars($row['passwd'], ENT_QUOTES).'">
                         </div>
                         <div class="linea-form">
                             <input type="hidden" value="edit" name="tiporegistro">
