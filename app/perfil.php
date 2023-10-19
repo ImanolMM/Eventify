@@ -49,32 +49,31 @@
                     <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
                     <form class="form" action="/submit.php" id="form-registro" method="POST">
                         <div class="linea-form">
+                            <p>Nombre de usuario: '.$row['usuario'].'</p>
+                        </div>
+                        <div class="linea-form">
                             <p>Nombre y Apellidos: '.$row['nombre'].'</p>
-                            <input type="text" name="nombre" value='.$row['nombre'].'>
+                            <input type="text" name="nombre" value="'.$row['nombre'].'">
                         </div>
                         <div class="linea-form">
                             <p>Teléfono: '.$row['telef'].'</p>
-                            <input type="text" name="telefono" value='.$row['telef'].'>
+                            <input type="text" name="telefono" value="'.$row['telef'].'">
                         </div>
                         <div class="linea-form">
                             <p>DNI: '.$row['dni'].' </p>
-                            <input type="text" name="dni" value='.$row['dni'].'>
+                            <input type="text" name="dni" value="'.$row['dni'].'">
                         </div>
                         <div class="linea-form">
                             <p>Email: '.$row['email'].'</p>
-                            <input type="email" name="email" value='.$row['email'].'>
+                            <input type="email" name="email" value="'.$row['email'].'">
                         </div>
                         <div class="linea-form">
                             <p>Nacimiento: '.$row['nacimiento'].'</p>
-                            <input type="date" name="nacimiento" value='.$row['nacimiento'].'>
-                        </div>
-                        <div class="linea-form">
-                            <p>Nombre de usuario: '.$row['usuario'].'</p>
-                            <input type="text" name="usuario" value='.$row['usuario'].'>
+                            <input type="date" name="nacimiento" value="'.$row['nacimiento'].'">
                         </div>
                         <div class="linea-form">
                             <p>Contraseña: '.$row['passwd'].' </p>
-                            <input type="password" name="passwd" value='.$row['passwd'].'>
+                            <input type="password" name="passwd" value="'.$row['passwd'].'">
                         </div>
                         <div class="linea-form">
                             <input type="hidden" value="edit" name="tiporegistro">
