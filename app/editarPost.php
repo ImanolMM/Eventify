@@ -47,7 +47,7 @@
             <div class='evento'>
                 <div class='barraUsuario'>
                   <form action='/editar.php' method='POST'>
-                    <input name='titulo' type='hidden' value='".$row['titulo']."'>
+                    <input name='titulo' type='hidden' value='".htmlspecialchars($row['titulo'], ENT_QUOTES)."'>
                     <button class='botonEditar'> Editar </button>
                   </form>
                   <button class='botonEliminar'> Eliminar evento </button>
