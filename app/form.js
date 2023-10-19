@@ -105,7 +105,7 @@ function comprobarTelefono(telefono){
 
 function comprobarNombre(nombre) {
     // Solo letras y espacios
-    if (/^[A-Za-z\s]+$/.test(nombre)) {
+    if (/^[A-Za-z\sñÑáéíóúÁÉÍÓÚçÇ]+$/.test(nombre)) {
         return true
     } else {
         alert("Solo se admiten letras y espacios en el nombre")
@@ -115,7 +115,7 @@ function comprobarNombre(nombre) {
 
 function comprobarEmail(email) {
     // Comprobar email
-    if (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/.test(email)) {
+    if (/^[a-zA-Z0-9._-ñÑ]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/.test(email)) {
         return true
     } else {
         alert("Email no válido")
@@ -135,7 +135,7 @@ function comprobarNacimiento(nacimiento) {
 
 function comprobarUsuario(usuario) {
     // números y letras
-    if (/^[a-zA-Z0-9]+$/.test(usuario)) {
+    if (/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚçÇ]+$/.test(usuario)) {
         return true
     } else {
         alert("El usuario debe incluir solo números y letras")

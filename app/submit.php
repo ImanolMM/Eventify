@@ -81,25 +81,16 @@
                 if(isset($_COOKIE["user"])){
                     $viejoUsuario = $_COOKIE["user"];
 
-                    $consulta = "UPDATE usuarios SET nombre = ?, telef = ?, dni = ?, email = ?, nacimiento = ?, usuario = ?, passwd = ? WHERE usuario = ?";
-                    $tipos = "sissssss";
-                    $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $usuario, $passwd, $viejoUsuario);
+                    $consulta = "UPDATE usuarios SET nombre = ?, telef = ?, dni = ?, email = ?, nacimiento = ?, passwd = ? WHERE usuario = ?";
+                    $tipos = "sisssss";
+                    $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $passwd, $viejoUsuario);
                     if($stmt = mysqli_prepare($conn, $consulta)){
                             $stmt->bind_param($tipos, ...$parametros);
                             if($stmt->execute()){
 
                                 $mensaje = "Usuario editado";
-                                setcookie("user", $usuario, time() + (86400 * 30), "/");
+                                setcookie("user", $viejoUsuario, time() + (86400 * 30), "/");
 
-                                // editamos sus eventos
-                                $consulta = "UPDATE eventos SET usuario = ? WHERE usuario = ?";
-                                $tipos = "ss";
-                                $parametros = array($usuario, $viejoUsuario);
-
-                                if($stmt = mysqli_prepare($conn, $consulta)){
-                                    $stmt->bind_param($tipos, ...$parametros);
-                                    $stmt->execute();
-                                }
                             } 
                             else $mensaje = "Error al editar";
                             $stmt->close();

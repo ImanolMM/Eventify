@@ -34,7 +34,7 @@ function init(){
     })
 }
 
-function comprobarTelefono(telefono){
+    function comprobarTelefono(telefono){
     // 9 números
     var aceptado = true
     for(const char of telefono){
@@ -50,33 +50,33 @@ function comprobarTelefono(telefono){
     }
 
     return aceptado
-    
-}
 
-// /regex/.test(string)
-// funciones creadas por chatgpt
+    }
 
-function comprobarNombre(nombre) {
+    // /regex/.test(string)
+    // funciones creadas por chatgpt
+
+    function comprobarNombre(nombre) {
     // Solo letras y espacios
-    if (/^[A-Za-z\s]+$/.test(nombre)) {
+    if (/^[A-Za-z\sñÑáéíóúÁÉÍÓÚçÇ]+$/.test(nombre)) {
         return true
     } else {
         alert("Solo se admiten letras y espacios en el nombre")
         return false
     }
-}
+    }
 
-function comprobarEmail(email) {
+    function comprobarEmail(email) {
     // Comprobar email
-    if (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/.test(email)) {
+    if (/^[a-zA-Z0-9._-ñÑ]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/.test(email)) {
         return true
     } else {
         alert("Email no válido")
         return false
     }
-}
+    }
 
-function comprobarNacimiento(nacimiento) {
+    function comprobarNacimiento(nacimiento) {
     // comprobar si encaja con alguna de las 2 yyyy-mm-dd o dd-mm-yyyy siendo números
     if (/^\d{4}-\d{2}-\d{2}$|^\d{2}-\d{2}-\d{4}$/.test(nacimiento)) {
         return true
@@ -84,49 +84,52 @@ function comprobarNacimiento(nacimiento) {
         alert("La fecha de nacimiento debe seguir estos formatos: yyyy-mm-dd o dd-mm-yyyy")
         return false
     }
-}
+    }
 
-function comprobarUsuario(usuario) {
+    function comprobarUsuario(usuario) {
     // números y letras
-    if (/^[a-zA-Z0-9]+$/.test(usuario)) {
+    if (/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚçÇ]+$/.test(usuario)) {
         return true
     } else {
         alert("El usuario debe incluir solo números y letras")
         return false
     }
-}
+    }
 
-function validarDNI(dni) {
+    function validarDNI(dni) {
     // Expresión regular para validar el formato correcto del DNI
     const dniRegex = /^(\d{8})-([A-Z])$/;
-  
+
     // Verificar si el DNI coincide con el formato esperado
     if (!dniRegex.test(dni)) {
         alert("Formato de DNI no válido")
         return false;
     }
-  
+
     // Extraer el número y la letra del DNI
     const [, numero, letra] = dni.match(dniRegex);
-  
+
     // Array con las letras posibles en un DNI
     const letrasPosibles = 'TRWAGMYFPDXBNJZSQVHLCKE';
-  
+
     // Calcular la letra correcta según el número
     const letraCalculada = letrasPosibles[numero % 23];
-  
+
     // Comparar la letra calculada con la letra proporcionada
     if(letra !== letraCalculada){
         alert("La letra del DNI no es correcta")
     }
     return letra === letraCalculada;
-  }
+    }
 
-  function comprobarPasswd(passwd){
+
+    function comprobarPasswd(passwd){
     if(passwd.length > 0){
         return true
     }else{
         alert("El campo de la contraseña no puede estar vacío")
         return false
     }
-  }
+    }
+
+
