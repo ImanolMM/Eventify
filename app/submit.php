@@ -36,20 +36,25 @@
         // https://www.php.net/manual/es/mysqli.prepare.php en los comentarios, el de urso
         if($tipo == "signup" && !$existeUsuario){
 
-            $consulta = "INSERT INTO usuarios VALUES(?, ?, ?, ?, ?, ?, ?)";
-            $tipos = "sisssss";
-            $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $usuario, $passwd);
+            $consulta = "INSERT INTO usuarios(nombre,telef,dni,email,nacimiento,usuario,passwd,sal) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            $sal = bin2hex(random_bytes(16));
+            $contraseñaSal = $sal . $passwd;
+            $contraseña = password_hash($contraseñaSal, PASSWORD_BCRYPT);
+            $tipos = "sissssss";
+            $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $usuario, $contraseña, $sal);
+            
             if($stmt = mysqli_prepare($conn, $consulta)){
-                    $stmt->bind_param($tipos, ...$parametros);
-                    $stmt->execute();
-                    $stmt->close();
-                    $mensaje = "Usuario creado";
+                $stmt->bind_param($tipos, ...$parametros);
+                $stmt->execute();
+                $stmt->close();
+                $mensaje = "Usuario creado";
+                // https://www.w3schools.com/php/func_network_setcookie.asp
+                $cookie_name = "user";
+                $cookie_value = $usuario;
+                setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
             }
 
-            // https://www.w3schools.com/php/func_network_setcookie.asp
-            $cookie_name = "user";
-            $cookie_value = $usuario;
-            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
+            
             header("Location: /");
             exit();
         }else{
@@ -62,7 +67,10 @@
                 $passCorrecta = false;
 
                 while ($row = mysqli_fetch_array($query)) {
-                    $passCorrecta = $row['passwd'] == $passwd;
+                    
+                    $con = $row['sal'] . $passwd;
+                    $mensaje = $row['passwd'] . " " . $contra;
+                    $passCorrecta = password_verify($con,$row['passwd']);
                 }
 
                 if($passCorrecta){
@@ -73,7 +81,7 @@
                     header("Location: /");
                     exit();
                 }else{
-                    $mensaje = "Usuario o contraseña incorrecta";
+                    //$mensaje = "Usuario o contraseña incorrecta";
                 }
                 
                 
@@ -81,9 +89,12 @@
                 if(isset($_COOKIE["user"])){
                     $viejoUsuario = $_COOKIE["user"];
 
-                    $consulta = "UPDATE usuarios SET nombre = ?, telef = ?, dni = ?, email = ?, nacimiento = ?, passwd = ? WHERE usuario = ?";
-                    $tipos = "sisssss";
-                    $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $passwd, $viejoUsuario);
+                    $consulta = "UPDATE usuarios SET nombre = ?, telef = ?, dni = ?, email = ?, nacimiento = ?, passwd = ?, sal = ? WHERE usuario = ?";
+                    $tipos = "sissssss";
+                    $sal = bin2hex(random_bytes(16));
+                    $contraseñaSal = $sal . $passwd;
+                    $contraseña = password_hash($contraseñaSal, PASSWORD_BCRYPT);
+                    $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $contraseña, $sal, $viejoUsuario);
                     if($stmt = mysqli_prepare($conn, $consulta)){
                             $stmt->bind_param($tipos, ...$parametros);
                             if($stmt->execute()){

@@ -72,8 +72,8 @@
                             <input type="date" name="nacimiento" value="'.$row['nacimiento'].'">
                         </div>
                         <div class="linea-form">
-                            <p>Contraseña: '.$row['passwd'].' </p>
-                            <input type="password" name="passwd" value="'.htmlspecialchars($row['passwd'], ENT_QUOTES).'">
+                            <p>Contraseña </p>
+                            <input type="password" name="passwd" value="">
                         </div>
                         <div class="linea-form">
                             <input type="hidden" value="edit" name="tiporegistro">
