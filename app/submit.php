@@ -61,26 +61,52 @@
             if($tipo == "signin"){
                 // iniciar sesión, comprobar contraseña
 
-                $query = mysqli_query($conn, "SELECT * FROM usuarios WHERE usuario = '" . $usuario ."'")
-                    or die (mysqli_error($conn));
+                $consulta_usuario = "SELECT * FROM usuarios WHERE usuario = ?";
+                $stmt = mysqli_prepare($conn, $consulta_usuario);
+                mysqli_stmt_bind_param($stmt, "s", $usuario);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
 
                 $passCorrecta = false;
+                $ip_usuario = $_SERVER['REMOTE_ADDR'];
 
-                while ($row = mysqli_fetch_array($query)) {
-                    
+                while ($row = mysqli_fetch_array($result)) {
                     $con = $row['sal'] . $passwd;
-                    $mensaje = $row['passwd'] . " " . $contra;
-                    $passCorrecta = password_verify($con,$row['passwd']);
+                    $passCorrecta = password_verify($con, $row['passwd']);
                 }
 
-                if($passCorrecta){
+                $consulta_accesos = "SELECT intentos FROM accesos WHERE usuario = ? AND ip = ? AND fecha = CURDATE()";
+                $stmt = mysqli_prepare($conn, $consulta_accesos);
+                mysqli_stmt_bind_param($stmt, "ss", $usuario, $ip_usuario);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+
+                if ($row = mysqli_fetch_array($result)) {
+                    $intentos = $row['intentos'];
+                } else {
+                    $intentos = 0;
+                }
+
+                if ($passCorrecta && $intentos < 5) {
                     $mensaje = "Inicio de sesión correcto";
                     $cookie_name = "user";
                     $cookie_value = $usuario;
-                    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
+                    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 día de duración
                     header("Location: /");
                     exit();
-                }else{
+                } else {
+                    if ($intentos === 0) {
+                        $intentos = 1;
+                        $insert_accesos = "INSERT INTO accesos(usuario, ip, intentos, fecha) VALUES(?, ?, 1, CURDATE())";
+                    } else {
+                        $intentos++;
+                        $insert_accesos = "UPDATE accesos SET intentos = ? WHERE usuario = ? AND ip = ? AND fecha = CURDATE()";
+                    }
+                    
+                    $stmt = mysqli_prepare($conn, $insert_accesos);
+                    mysqli_stmt_bind_param($stmt, "sss", $intentos, $usuario, $ip_usuario);
+                    mysqli_stmt_execute($stmt);
+                    
                     //$mensaje = "Usuario o contraseña incorrecta";
                 }
                 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 02-11-2023 a las 12:29:12
+-- Tiempo de generación: 06-11-2023 a las 19:00:44
 -- Versión del servidor: 10.8.2-MariaDB-1:10.8.2+maria~focal
 -- Versión de PHP: 8.2.8
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `database`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `accesos`
+--
+
+CREATE TABLE `accesos` (
+  `usuario` varchar(50) NOT NULL,
+  `ip` varchar(50) NOT NULL,
+  `intentos` int(11) DEFAULT NULL,
+  `fecha` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -79,6 +92,12 @@ INSERT INTO `usuarios` (`nombre`, `telef`, `dni`, `email`, `nacimiento`, `usuari
 --
 
 --
+-- Indices de la tabla `accesos`
+--
+ALTER TABLE `accesos`
+  ADD PRIMARY KEY (`usuario`,`ip`);
+
+--
 -- Indices de la tabla `eventos`
 --
 ALTER TABLE `eventos`
@@ -89,6 +108,16 @@ ALTER TABLE `eventos`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`usuario`);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `accesos`
+--
+ALTER TABLE `accesos`
+  ADD CONSTRAINT `accesos_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
