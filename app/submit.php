@@ -58,7 +58,7 @@
             header("Location: /");
             exit();
         }else{
-            if($tipo == "signin"){
+            if($tipo === "signin"){
                 // iniciar sesión, comprobar contraseña
 
                 $consulta_usuario = "SELECT * FROM usuarios WHERE usuario = ?";
@@ -80,13 +80,10 @@
                 mysqli_stmt_bind_param($stmt, "ss", $usuario, $ip_usuario);
                 mysqli_stmt_execute($stmt);
                 $result = mysqli_stmt_get_result($stmt);
-
+                $intentos=0;
                 if ($row = mysqli_fetch_array($result)) {
                     $intentos = $row['intentos'];
-                } else {
-                    $intentos = 0;
-                }
-
+                } 
                 if ($passCorrecta && $intentos < 5) {
                     $mensaje = "Inicio de sesión correcto";
                     $cookie_name = "user";
@@ -94,20 +91,28 @@
                     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 día de duración
                     header("Location: /");
                     exit();
-                } else {
+                }
+                else if ($intentos >= 5) {
+                    $mensaje = "Demasiados intentos, espere 24 horas";
+                }
+                else {
                     if ($intentos === 0) {
                         $intentos = 1;
                         $insert_accesos = "INSERT INTO accesos(usuario, ip, intentos, fecha) VALUES(?, ?, 1, CURDATE())";
+                        $stmt = mysqli_prepare($conn, $insert_accesos);
+                        mysqli_stmt_bind_param($stmt, "ss", $usuario, $ip_usuario);
+                        mysqli_stmt_execute($stmt);
                     } else {
-                        $intentos++;
-                        $insert_accesos = "UPDATE accesos SET intentos = ? WHERE usuario = ? AND ip = ? AND fecha = CURDATE()";
+                        $intentos = $intentos + 1;
+                        $cambiar_accesos = "UPDATE accesos SET intentos = ? WHERE usuario = ? AND ip = ? AND fecha = CURDATE()";
+                        $stmt = mysqli_prepare($conn, $cambiar_accesos);
+                        mysqli_stmt_bind_param($stmt, "sss", $intentos, $usuario, $ip_usuario);
+                        mysqli_stmt_execute($stmt);
                     }
                     
-                    $stmt = mysqli_prepare($conn, $insert_accesos);
-                    mysqli_stmt_bind_param($stmt, "sss", $intentos, $usuario, $ip_usuario);
-                    mysqli_stmt_execute($stmt);
                     
-                    //$mensaje = "Usuario o contraseña incorrecta";
+                    
+                    $mensaje = "Usuario o contraseña incorrecta";
                 }
                 
                 
