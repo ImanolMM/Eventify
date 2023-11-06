@@ -10,7 +10,7 @@ web:
      - ./app:/var/www/html/
 
 db:
-  image: mariadb:10.8.2
+  image: mariadb@sha256:490f01279be1452f12f497a592112cb960cf0500938dbf0ea3f0135cb6728d3d
   restart: always
   volumes:
     - ./database.sql:/docker-entrypoint-initdb.d/setup.sql
@@ -24,7 +24,7 @@ db:
     - "8889:3306"
 
 phpmyadmin:
-  image: phpmyadmin/phpmyadmin:latest
+  image: phpmyadmin/phpmyadmin@sha256:67ba2550fd004399ab0b95b64021a88ea544011e566a9a1995180a3decb6410d
   links:
     - db
   ports:
