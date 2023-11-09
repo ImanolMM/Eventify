@@ -166,11 +166,13 @@
                 }
             }else{
                 //guardar logs en un fichero
+                /*
                 $logDirectory = "logs";
 
                 if (!is_dir($logDirectory)) {
                     mkdir($logDirectory, 0755, true);
                 }
+                */
                 $ipAddress = $_SERVER['REMOTE_ADDR'];
                 logFailedSignUpAttempt($usuario, $ipAddress, $motivo);
             }
