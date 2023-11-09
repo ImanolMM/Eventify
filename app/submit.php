@@ -69,13 +69,13 @@
         }
     }
     
-    function logFailedSignUpAttempt($username, $ipAddress, $message) {
+    function logFailedSignUpAttempt($username, $ipAddress, $message, $type) {
         $logDirectory = "logs";
         $logFile = "failed_signin_attempts.log";
         $timestamp = date("Y-m-d H:i:s");
         
         // Mensaje de registro
-        $logMessage = "$message at $timestamp from IP $ipAddress for user $username\n";
+        $logMessage = "$message at $timestamp from IP $ipAddress for user $username on $type\n";
         
         // Guardar el registro en el archivo
         file_put_contents($logFile, $logMessage, FILE_APPEND | LOCK_EX);
@@ -172,16 +172,8 @@
                     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
                 }
             }else{
-                //guardar logs en un fichero
-                /*
-                $logDirectory = "logs";
-
-                if (!is_dir($logDirectory)) {
-                    mkdir($logDirectory, 0755, true);
-                }
-                */
                 $ipAddress = $_SERVER['REMOTE_ADDR'];
-                logFailedSignUpAttempt($usuario, $ipAddress, $motivo);
+                logFailedSignUpAttempt($usuario, $ipAddress, $motivo, "signup");
             }
 
             
@@ -189,6 +181,7 @@
             exit();
         }else{
             if($tipo === "signin" && !$error){
+
                 // iniciar sesión, comprobar contraseña
 
                 $consulta_usuario = "SELECT * FROM usuarios WHERE usuario = ?";
@@ -248,15 +241,34 @@
                 
             }else if($tipo === "edit"){
                 if(isset($_COOKIE["user"])){
-                    $viejoUsuario = $_COOKIE["user"];
+                    $error = false;
+                    $motivo = "";
+                    if (!comprobarEmail($email)){
+                        $error = true;
+                        $motivo = "Email no válido";
+                    }elseif (!comprobarNombre($nombre)){
+                        $error = true;
+                        $motivo = "Nombre no válido";
+                    }elseif (!comprobarNacimiento($nacimiento)){
+                        $error = true;
+                        $motivo = "Fecha de nacimiento no válida";
+                    }elseif (!validarDNI($dni)){
+                        $error = true;
+                        $motivo = "DNI no válido";
+                    }elseif (!comprobarPasswd($passwd)){
+                        $error = true;
+                        $motivo = "Contraseña no válida";
+                    }
+                    if (!$error){
+                        $viejoUsuario = $_COOKIE["user"];
 
-                    $consulta = "UPDATE usuarios SET nombre = ?, telef = ?, dni = ?, email = ?, nacimiento = ?, passwd = ?, sal = ? WHERE usuario = ?";
-                    $tipos = "sissssss";
-                    $sal = bin2hex(random_bytes(16));
-                    $contraseñaSal = $sal . $passwd;
-                    $contraseña = password_hash($contraseñaSal, PASSWORD_BCRYPT);
-                    $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $contraseña, $sal, $viejoUsuario);
-                    if($stmt = mysqli_prepare($conn, $consulta)){
+                        $consulta = "UPDATE usuarios SET nombre = ?, telef = ?, dni = ?, email = ?, nacimiento = ?, passwd = ?, sal = ? WHERE usuario = ?";
+                        $tipos = "sissssss";
+                        $sal = bin2hex(random_bytes(16));
+                        $contraseñaSal = $sal . $passwd;
+                        $contraseña = password_hash($contraseñaSal, PASSWORD_BCRYPT);
+                        $parametros = array($nombre, (int) $telef, $dni, $email, $nacimiento, $contraseña, $sal, $viejoUsuario);
+                        if($stmt = mysqli_prepare($conn, $consulta)){
                             $stmt->bind_param($tipos, ...$parametros);
                             if($stmt->execute()){
 
@@ -266,6 +278,10 @@
                             } 
                             else $mensaje = "Error al editar";
                             $stmt->close();
+                        }
+                    }else{
+                        $ipAddress = $_SERVER['REMOTE_ADDR'];
+                        logFailedSignUpAttempt($usuario, $ipAddress, $motivo, "edit");
                     }
                 }
                 
