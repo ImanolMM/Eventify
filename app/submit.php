@@ -1,4 +1,39 @@
 <?php
+    function comprobarCookie($cookie_name) {
+        $cookie_name = "user";
+        if(!isset($_COOKIE[$cookie_name])) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function comprobarCookieUsuario($usuario, $sal) {
+        $cookie_name = "user";
+        if(!isset($_COOKIE[$cookie_name])) {
+            return false;
+        } else {
+            $usersal = $usuario . $sal;
+            if (password_verify($usersal, $_COOKIE[$cookie_name])) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    function setCookieUsuarioSegura($usuario, $sal) {
+        $cookie_name = "user";
+        $usersal = $usuario . $sal;
+        $cookie_value = password_hash($usersal, PASSWORD_BCRYPT);
+        $consulta = "INSERT INTO usuarios(cookie) VALUES(?)";
+        $tipos = "s";
+        $parametros = array($cookie_value);
+        if($stmt = mysqli_prepare($conn, $consulta)){
+            $stmt->bind_param($tipos, ...$parametros);
+            $stmt->execute();
+            $stmt->close();
+            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
+        }
+    }
     function comprobarNombre($nombre) {
         // Solo letras y espacios
         if (preg_match('/^[A-Za-z\sñÑáéíóúÁÉÍÓÚçÇ]+$/', $nombre)) {
