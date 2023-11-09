@@ -7,11 +7,21 @@
             return true;
         }
     }
-    function comprobarCookieUsuario($usuario, $sal) {
+    function comprobarCookieUsuario() {
         $cookie_name = "user";
         if(!isset($_COOKIE[$cookie_name])) {
             return false;
         } else {
+            $consulta_usuario = "SELECT usuario,sal FROM usuarios WHERE cookie = ?";
+            $stmt = mysqli_prepare($conn, $consulta_usuario);
+            mysqli_stmt_bind_param($stmt, "s", $usuario);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+
+            while ($row = mysqli_fetch_array($result)) {
+                $usuario = $row['usuario'];
+                $sal = $row['sal'];
+            }
             $usersal = $usuario . $sal;
             if (password_verify($usersal, $_COOKIE[$cookie_name])) {
                 return true;
