@@ -1,4 +1,5 @@
 <?php
+    session_start();
     function comprobarNombre($nombre) {
         // Solo letras y espacios
         if (preg_match('/^[A-Za-z\sñÑáéíóúÁÉÍÓÚçÇ]+$/', $nombre)) {

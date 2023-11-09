@@ -1,7 +1,8 @@
 <?php
+    session_start();
             // https://www.freecodecamp.org/news/creating-html-forms/
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                
+
                 // Evitar CSRF
                 $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
 

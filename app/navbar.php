@@ -1,4 +1,5 @@
 <?php
+  session_start();
   header('X-Content-Type-Options: nosniff');
   header('Server: Apache');
   header('X-Powered-By: PHP');
