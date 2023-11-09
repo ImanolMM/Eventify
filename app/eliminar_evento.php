@@ -1,6 +1,6 @@
 <?php
     // https://www.freecodecamp.org/news/creating-html-forms/
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if(isset($_COOKIE["user"])){
             $usuario = $_COOKIE["user"];
 
