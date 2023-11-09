@@ -71,7 +71,7 @@
     
     function logFailedSignUpAttempt($username, $ipAddress, $message) {
         $logDirectory = "logs";
-        $logFile = $logDirectory . "/failed_signin_attempts.log";
+        $logFile = "failed_signin_attempts.log";
         $timestamp = date("Y-m-d H:i:s");
         
         // Mensaje de registro
@@ -91,7 +91,7 @@
             // return 405 http status code
             //header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
             //exit;
-            
+
         }
 
         $nombre = $_POST["nombre"];
