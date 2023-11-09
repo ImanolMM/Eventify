@@ -127,22 +127,22 @@
             $motivo = "";
             if (!comprobarEmail($email)){
                 $error = true;
-                $motivo = "Email no válido"
+                $motivo = "Email no válido";
             }elseif (!comprobarNombre($nombre)){
                 $error = true;
-                $motivo = "Nombre no válido"
+                $motivo = "Nombre no válido";
             }elseif (!comprobarNacimiento($nacimiento)){
                 $error = true;
-                $motivo = "Fecha de nacimiento no válida"
+                $motivo = "Fecha de nacimiento no válida";
             }elseif (!comprobarUsuario($usuario)){
                 $error = true;
-                $motivo = "Usuario no válido"
+                $motivo = "Usuario no válido";
             }elseif (!validarDNI($dni)){
                 $error = true;
-                $motivo = "DNI no válido"
+                $motivo = "DNI no válido";
             }elseif (!comprobarPasswd($passwd)){
                 $error = true;
-                $motivo = "Contraseña no válida"
+                $motivo = "Contraseña no válida";
             }
 
             if (!$error){
