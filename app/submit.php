@@ -123,7 +123,7 @@
         }
 
         // https://www.php.net/manual/es/mysqli.prepare.php en los comentarios, el de urso
-        if($tipo == "signup" && !$existeUsuario){
+        if($tipo === "signup" && !$existeUsuario){
             $error = false;
             $motivo = "";
             if (!comprobarEmail($email)){
@@ -239,7 +239,7 @@
                 }
                 
                 
-            }else if($tipo == "edit"){
+            }else if($tipo === "edit"){
                 if(isset($_COOKIE["user"])){
                     $viejoUsuario = $_COOKIE["user"];
 
