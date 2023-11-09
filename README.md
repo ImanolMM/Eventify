@@ -11,6 +11,12 @@ If this is the first time you are using this, you must build "web" (docker image
 $ docker build -t="web" .
 ```
 
+Assign permissions and owner to "app" folder to store security logs (required)
+```bash
+$ chmod -R 755 app
+$ chown -R www-data:www-data app
+```
+
 Enter the following command to start your containers:
 ```bash
 $ docker-compose up -d
