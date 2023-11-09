@@ -16,8 +16,8 @@ if (isset($_POST['titulo'])) {
       die("Database connection failed: " . $conn->connect_error);
   }
 
-  if (isset($_COOKIE["user"])) {
-      $usuario = $_COOKIE["user"];
+  if (comprobarCookieUsuario()) {
+      $usuario = getUsuarioCookie();
   } else {
       $usuario = "invitado";
   }

@@ -1,8 +1,8 @@
 <?php
     // https://www.freecodecamp.org/news/creating-html-forms/
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        if(isset($_COOKIE["user"])){
-            $usuario = $_COOKIE["user"];
+        if(comprobarCookieUsuario()){
+            $usuario = getUsuarioCookie();
 
         }else{
             $usuario = "invitado";

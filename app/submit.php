@@ -7,29 +7,7 @@
             return true;
         }
     }
-    function comprobarCookieUsuario() {
-        $cookie_name = "user";
-        if(!isset($_COOKIE[$cookie_name])) {
-            return false;
-        } else {
-            $consulta_usuario = "SELECT usuario,sal FROM usuarios WHERE cookie = ?";
-            $stmt = mysqli_prepare($conn, $consulta_usuario);
-            mysqli_stmt_bind_param($stmt, "s", $usuario);
-            mysqli_stmt_execute($stmt);
-            $result = mysqli_stmt_get_result($stmt);
-
-            while ($row = mysqli_fetch_array($result)) {
-                $usuario = $row['usuario'];
-                $sal = $row['sal'];
-            }
-            $usersal = $usuario . $sal;
-            if (password_verify($usersal, $_COOKIE[$cookie_name])) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
+    
     function setCookieUsuarioSegura($usuario, $sal) {
         $cookie_name = "user";
         $usersal = $usuario . $sal;
@@ -212,9 +190,7 @@
                     $stmt->close();
                     $mensaje = "Usuario creado";
                     // https://www.w3schools.com/php/func_network_setcookie.asp
-                    $cookie_name = "user";
-                    $cookie_value = $usuario;
-                    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
+                    setCookieUsuarioSegura($usuario, $sal);
                 }
             }else{
                 $ipAddress = $_SERVER['REMOTE_ADDR'];
@@ -239,7 +215,8 @@
                 $ip_usuario = $_SERVER['REMOTE_ADDR'];
 
                 while ($row = mysqli_fetch_array($result)) {
-                    $con = $row['sal'] . $passwd;
+                    $sal = $row['sal'];
+                    $con = $sal . $passwd;
                     $passCorrecta = password_verify($con, $row['passwd']);
                 }
 
@@ -254,9 +231,7 @@
                 } 
                 if ($passCorrecta && $intentos < 5) {
                     $mensaje = "Inicio de sesión correcto";
-                    $cookie_name = "user";
-                    $cookie_value = $usuario;
-                    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 día de duración
+                    setCookieUsuarioSegura($usuario, $sal);
                     header("Location: /");
                     exit();
                 }
@@ -285,7 +260,7 @@
                 
                 
             }else if($tipo === "edit"){
-                if(isset($_COOKIE["user"])){
+                if(comprobarCookieUsuario()){
                     $error = false;
                     $motivo = "";
                     if (!comprobarEmail($email)){
@@ -305,7 +280,7 @@
                         $motivo = "Contraseña no válida";
                     }
                     if (!$error){
-                        $viejoUsuario = $_COOKIE["user"];
+                        $viejoUsuario = getUsuarioCookie();
 
                         $consulta = "UPDATE usuarios SET nombre = ?, telef = ?, dni = ?, email = ?, nacimiento = ?, passwd = ?, sal = ? WHERE usuario = ?";
                         $tipos = "sissssss";
@@ -318,7 +293,7 @@
                             if($stmt->execute()){
 
                                 $mensaje = "Usuario editado";
-                                setcookie("user", $viejoUsuario, time() + (86400 * 30), "/");
+                                setCookieUsuarioSegura($usuario, $sal);
 
                             } 
                             else $mensaje = "Error al editar";
