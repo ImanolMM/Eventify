@@ -85,7 +85,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         //Evitar CSRF
-        $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+        $token = $_POST["token"];
 
         if (!$token || $token !== $_SESSION['token']) {
             // return 405 http status code
