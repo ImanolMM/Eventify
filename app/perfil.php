@@ -81,6 +81,7 @@
                             <button type="submit" class="boton" id="botonPerfil">Editar</button>
                             </p>                  
                         </div>
+                        <input type="hidden" name="token" value='.$_SESSION['token'].'>
                     </form>
                 </div>';
             }

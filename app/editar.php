@@ -67,6 +67,7 @@ if (isset($_POST['titulo'])) {
                       <button type="submit" class="boton" id="botonRegistro">Editar</button>
                       </p>                  
                   </div>
+                  <input type="hidden" name="token" value='.$_SESSION['token'].'>
               </form>
           </div>';
   }

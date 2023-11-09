@@ -35,7 +35,6 @@
     <li>
       '.$perfil.'
       '.$logOut.'
-      <input type="hidden" name="token" value='.$_SESSION['token'].'>
     </li>
   </ul>
   </div>';

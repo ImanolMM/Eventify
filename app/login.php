@@ -77,6 +77,7 @@
                   </p>                  
                   <button class="boton" id="botonIniciar">Cambiar a Crear cuenta</button>
                 </div>
+                <input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?? '' ?>">
               </form>
 
         </div>
