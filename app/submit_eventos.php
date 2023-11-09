@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include("navbar.php");
             // https://www.freecodecamp.org/news/creating-html-forms/
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -74,9 +74,7 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <?php 
-            include("navbar.php");
-        ?>
+        
         <div class="page mensaje">
             <?php
                 echo $mensaje; 

@@ -5,7 +5,7 @@
   header('X-Powered-By: PHP');
   header('Content-Security-Policy: frame-ancestors');
   
-  $_SESSION['token'] = md5(uniqid(mt_rand(), true));
+  
 
   // para incluir el navbar en una de las páginas php:
   // https://stackoverflow.com/questions/8450696/execute-a-php-script-from-another-php-script

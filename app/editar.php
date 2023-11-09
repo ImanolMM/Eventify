@@ -1,5 +1,6 @@
 <?php
 include("navbar.php");
+$_SESSION['token'] = md5(uniqid(mt_rand(), true));
 
 if (isset($_POST['titulo'])) {
   $titulo = $_POST['titulo'];

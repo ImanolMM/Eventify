@@ -1,3 +1,8 @@
+<?php 
+        include("navbar.php");
+        $_SESSION['token'] = md5(uniqid(mt_rand(), true));
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,9 +17,7 @@
     </head>
     <body>
     <script src="form.js"></script>
-      <?php 
-        include("navbar.php");
-      ?>
+
       <div class="page">
         <?php
           session_start();
