@@ -113,14 +113,21 @@
         die("Database connection failed: " . $conn->connect_error);
         }
 
-        $query = mysqli_query($conn, "SELECT * FROM usuarios WHERE usuario = '" . $usuario ."'")
-            or die (mysqli_error($conn));
+        $query = mysqli_prepare($conn, "SELECT * FROM usuarios WHERE usuario = ?");
+        mysqli_stmt_bind_param($query, 's', $usuario);
+        mysqli_stmt_execute($query);
+
+        $resultado = mysqli_stmt_get_result($query);
 
         $existeUsuario = false;
 
-        while ($row = mysqli_fetch_array($query)) {
-            $existeUsuario = $existeUsuario || ($row['usuario'] == $usuario);
+        // Verificando si el usuario existe
+        while ($row = mysqli_fetch_array($resultado)) {
+            $existeUsuario = true;
         }
+
+        // Cerrando la sentencia preparada
+        mysqli_stmt_close($query);
 
         // https://www.php.net/manual/es/mysqli.prepare.php en los comentarios, el de urso
         if($tipo === "signup" && !$existeUsuario){
