@@ -49,27 +49,27 @@
                     <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
                     <form class="form" action="/submit.php" id="form-registro" method="POST">
                         <div class="linea-form">
-                            <p>Nombre de usuario: '.$row['usuario'].'</p>
+                            <p>Nombre de usuario: '.htmlspecialchars($row['usuario'], ENT_QUOTES).'</p>
                         </div>
                         <div class="linea-form">
-                            <p>Nombre y Apellidos: '.$row['nombre'].'</p>
-                            <input type="text" name="nombre" value="'.$row['nombre'].'">
+                            <p>Nombre y Apellidos: '.htmlspecialchars($row['nombre'], ENT_QUOTES).'</p>
+                            <input type="text" name="nombre" value="'.htmlspecialchars($row['nombre'], ENT_QUOTES).'">
                         </div>
                         <div class="linea-form">
-                            <p>Teléfono: '.$row['telef'].'</p>
-                            <input type="text" name="telefono" value="'.$row['telef'].'">
+                            <p>Teléfono: '.htmlspecialchars($row['telef'], ENT_QUOTES).'</p>
+                            <input type="text" name="telefono" value="'.htmlspecialchars($row['telef'], ENT_QUOTES).'">
                         </div>
                         <div class="linea-form">
-                            <p>DNI: '.$row['dni'].' </p>
-                            <input type="text" name="dni" value="'.$row['dni'].'">
+                            <p>DNI: '.htmlspecialchars($row['dni'], ENT_QUOTES).' </p>
+                            <input type="text" name="dni" value="'.htmlspecialchars($row['dni'], ENT_QUOTES).'">
                         </div>
                         <div class="linea-form">
-                            <p>Email: '.$row['email'].'</p>
-                            <input type="email" name="email" value="'.$row['email'].'">
+                            <p>Email: '.htmlspecialchars($row['email'], ENT_QUOTES).'</p>
+                            <input type="email" name="email" value="'.htmlspecialchars($row['email'], ENT_QUOTES).'">
                         </div>
                         <div class="linea-form">
-                            <p>Nacimiento: '.$row['nacimiento'].'</p>
-                            <input type="date" name="nacimiento" value="'.$row['nacimiento'].'">
+                            <p>Nacimiento: '.htmlspecialchars($row['nacimiento'], ENT_QUOTES).'</p>
+                            <input type="date" name="nacimiento" value="'.htmlspecialchars($row['nacimiento'], ENT_QUOTES).'">
                         </div>
                         <div class="linea-form">
                             <p>Contraseña </p>
