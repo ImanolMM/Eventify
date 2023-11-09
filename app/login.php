@@ -20,7 +20,6 @@
 
       <div class="page">
         <?php
-          session_start();
           $hostname = "db";
           $username = "admin";
           $password = "test";
