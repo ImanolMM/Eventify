@@ -9,7 +9,7 @@
         $db = "database";
 
         $conn = mysqli_connect($hostname,$username,$password,$db); 
-        if(comprobarCookieUsuario()){
+        if(comprobarCookieUsuario($conn)){
             $usuario = getUsuarioCookie($conn);
 
         }else{

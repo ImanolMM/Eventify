@@ -12,7 +12,7 @@
         $cookie_name = "user";
         $usersal = $usuario . $sal;
         $cookie_value = password_hash($usersal, PASSWORD_BCRYPT);
-        $consulta = "UPDATE usuarios(cookie) SET cookie = ? WHERE usuario = ?";
+        $consulta = "UPDATE usuarios SET cookie = ? WHERE usuario = ?";
         $tipos = "ss";
         $parametros = array($cookie_value,$usuario);
         if($stmt = mysqli_prepare($conn, $consulta)){
@@ -260,7 +260,7 @@
                 
                 
             }else if($tipo === "edit"){
-                if(comprobarCookieUsuario()){
+                if(comprobarCookieUsuario($conn)){
                     $error = false;
                     $motivo = "";
                     if (!comprobarEmail($email)){

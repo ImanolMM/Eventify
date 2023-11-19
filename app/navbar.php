@@ -5,7 +5,7 @@
 
   // para incluir el navbar en una de las páginas php:
   // https://stackoverflow.com/questions/8450696/execute-a-php-script-from-another-php-script
-  function comprobarCookieUsuario() {
+  function comprobarCookieUsuario($conn) {
     $cookie_name = "user";
     if(!isset($_COOKIE[$cookie_name])) {
         return false;
@@ -48,7 +48,7 @@
     return $usuario;
   }
   ini_set('display_errors', 0);
-  if(comprobarCookieUsuario() && $_COOKIE["user"] != "invitado"){
+  if(comprobarCookieUsuario($conn) && $_COOKIE["user"] != "invitado"){
     $perfil = '<a href="/perfil.php" class="material-symbols-outlined blanco">account_circle</a>';
     //cambiar el href de abajo para que redirija a logout.php
     $logOut = '<a href="logout.php"class="material-symbols-outlined blanco">logout</a>';
