@@ -44,7 +44,7 @@
                 A continuación se muestran ejemplos para cada campo
             </p>
             <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
-            <form class="form" action="/submit.php" id="form-registro" method="POST">
+            <form class="form" id="form-registro" method="POST">
                 <div class="linea-form" id="linea-nombre">
                     <p>Nombre y Apellidos: Jon Tom</p>
                     <input type="text" name="nombre">

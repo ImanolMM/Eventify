@@ -33,3 +33,14 @@ phpmyadmin:
     MYSQL_USER: admin
     MYSQL_PASSWORD: test
     MYSQL_DATABASE: database
+
+composer:
+  image: composer/composer
+  ports:
+    - "9001:9000"
+  volumes:
+    - "./composer:/var/www/html"
+  container_name: composer
+  working_dir: /composer
+  command: install
+

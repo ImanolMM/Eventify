@@ -1,10 +1,11 @@
 window.onload = init
+
 // https://stackoverflow.com/q/8935632 comprobar números
 // https://stackoverflow.com/q/9862761 comprobar letras
 function init() {
     var boton = document.getElementById("botonRegistro")
-    boton.addEventListener("click", () => {
-        event.preventDefault();
+    boton.addEventListener("click", async (e) => {
+        e.preventDefault();
         var aceptado = true
         var nombre = document.getElementsByName("nombre")[0]?.value
         var telefono = document.getElementsByName("telefono")[0]?.value
@@ -32,8 +33,25 @@ function init() {
         aceptado = aceptado && comprobarUsuario(usuario)
 
         if(aceptado){
-            var form = document.getElementById("form-registro")
-            form.submit()
+            const urlencoded = new URLSearchParams({
+                "usuario": `${usuario}`,
+                "passwd": `${passwd}`,
+              });
+
+            const res = await fetch('/authenticate.php', {
+                method: 'POST',
+                body: urlencoded
+              });
+        
+              if (res.status >= 200 && res.status <= 299) {
+                const jwt = await res.text();
+                // Guardamos el JWT como cookie
+                document.cookie = `${jwt}`;
+                console.log("funciona!!:  ",jwt);
+              } else {
+                // Handle errors
+                console.log(res.status, res.statusText);
+              }
         }
     })
 
