@@ -2,6 +2,7 @@
 error_reporting(E_ALL); ini_set('display_errors', 1);
 
     use Firebase\JWT\JWT;
+    require_once('./vendor/autoload.php');
 
     $usuario = $_POST["usuario"];
     $passwd = $_POST["passwd"];

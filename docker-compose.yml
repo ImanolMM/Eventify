@@ -39,8 +39,8 @@ composer:
   ports:
     - "9001:9000"
   volumes:
-    - "./composer:/var/www/html"
+    - ./app:/var/www/html/
   container_name: composer
-  working_dir: /composer
+  working_dir: /var/www/html/
   command: install
 

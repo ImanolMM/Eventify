@@ -1,6 +1,7 @@
 <?php
 
     use Firebase\JWT\JWT;
+    require_once('../vendor/autoload.php');
 
     if (! preg_match('/Bearer\s(\S+)/', $_SERVER['HTTP_AUTHORIZATION'], $matches)) {
         header('HTTP/1.0 400 Bad Request');
