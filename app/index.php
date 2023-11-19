@@ -40,11 +40,11 @@
             echo "
             <div class='evento'>
                 <div class='barraUsuario'>
-                  <span class='material-symbols-outlined'> account_circle</span>
-                  <p class='nombreUsuarioEvento no-overflow'>{$row['usuario']}</p>
+                  <span class='material-symbols-outlined'>account_circle</span>
+                  <p class='nombreUsuarioEvento no-overflow'>".htmlspecialchars($row['usuario'], ENT_QUOTES)."</p>
                 </div>
-                <h2 class='tituloEvento no-overflow'>{$row['titulo']}</h2>
-                <p class='descripcionEvento'>{$row['enunciado']}</p>
+                <h2 class='tituloEvento no-overflow'>" .htmlspecialchars($row['titulo'],ENT_QUOTES)."</h2>
+                <p class='descripcionEvento'>".htmlspecialchars($row['enunciado'], ENT_QUOTES)."</p>
                 <span class='material-symbols-outlined botonDescarga'> download</span>
                 <!--chapuza-->
                 <input type='hidden' class='opcion1' value='".htmlspecialchars($row['opcion1'], ENT_QUOTES)."'>
