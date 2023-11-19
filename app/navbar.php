@@ -32,7 +32,7 @@
         }
     }
   }
-  function getUsuarioCookie(){
+  function getUsuarioCookie($conn){
     $hash=$_COOKIE["user"];
     //get the user from the database
     $consulta_usuario = "SELECT usuario,sal FROM usuarios WHERE cookie = ?";

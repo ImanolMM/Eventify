@@ -11,13 +11,6 @@
                     header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
                     exit;
                 }
-
-                if(comprobarCookieUsuario()){
-                    $usuario = getUsuarioCookie();
-
-                }else{
-                    $usuario = "invitado";
-                }
                 $viejoTitulo = $_POST["viejoTitulo"];
                 $titulo = $_POST["titulo"];
                 $enunciado = $_POST["enunciado"];
@@ -33,6 +26,13 @@
                 $db = "database";
 
                 $conn = mysqli_connect($hostname,$username,$password,$db); 
+                if(comprobarCookieUsuario()){
+                    $usuario = getUsuarioCookie($conn);
+
+                }else{
+                    $usuario = "invitado";
+                }
+                
                 if ($conn->connect_error) {
                 die("Database connection failed: " . $conn->connect_error);
                 }

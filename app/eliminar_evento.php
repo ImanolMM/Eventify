@@ -1,12 +1,6 @@
 <?php
     // https://www.freecodecamp.org/news/creating-html-forms/
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        if(comprobarCookieUsuario()){
-            $usuario = getUsuarioCookie();
-
-        }else{
-            $usuario = "invitado";
-        }
         $titulo = $_POST["titulo"];
 
         $hostname = "db";
@@ -15,6 +9,13 @@
         $db = "database";
 
         $conn = mysqli_connect($hostname,$username,$password,$db); 
+        if(comprobarCookieUsuario()){
+            $usuario = getUsuarioCookie($conn);
+
+        }else{
+            $usuario = "invitado";
+        }
+        
         if ($conn->connect_error) {
         die("Database connection failed: " . $conn->connect_error);
         }

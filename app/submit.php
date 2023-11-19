@@ -8,13 +8,13 @@
         }
     }
     
-    function setCookieUsuarioSegura($usuario, $sal) {
+    function setCookieUsuarioSegura($usuario, $sal, $conn) {
         $cookie_name = "user";
         $usersal = $usuario . $sal;
         $cookie_value = password_hash($usersal, PASSWORD_BCRYPT);
-        $consulta = "INSERT INTO usuarios(cookie) VALUES(?)";
-        $tipos = "s";
-        $parametros = array($cookie_value);
+        $consulta = "UPDATE usuarios(cookie) SET cookie = ? WHERE usuario = ?";
+        $tipos = "ss";
+        $parametros = array($cookie_value,$usuario);
         if($stmt = mysqli_prepare($conn, $consulta)){
             $stmt->bind_param($tipos, ...$parametros);
             $stmt->execute();
@@ -190,7 +190,7 @@
                     $stmt->close();
                     $mensaje = "Usuario creado";
                     // https://www.w3schools.com/php/func_network_setcookie.asp
-                    setCookieUsuarioSegura($usuario, $sal);
+                    setCookieUsuarioSegura($usuario, $sal, $conn);
                 }
             }else{
                 $ipAddress = $_SERVER['REMOTE_ADDR'];
@@ -231,7 +231,7 @@
                 } 
                 if ($passCorrecta && $intentos < 5) {
                     $mensaje = "Inicio de sesión correcto";
-                    setCookieUsuarioSegura($usuario, $sal);
+                    setCookieUsuarioSegura($usuario, $sal, $conn);
                     header("Location: /");
                     exit();
                 }
@@ -280,7 +280,7 @@
                         $motivo = "Contraseña no válida";
                     }
                     if (!$error){
-                        $viejoUsuario = getUsuarioCookie();
+                        $viejoUsuario = getUsuarioCookie($conn);
 
                         $consulta = "UPDATE usuarios SET nombre = ?, telef = ?, dni = ?, email = ?, nacimiento = ?, passwd = ?, sal = ? WHERE usuario = ?";
                         $tipos = "sissssss";
@@ -293,7 +293,7 @@
                             if($stmt->execute()){
 
                                 $mensaje = "Usuario editado";
-                                setCookieUsuarioSegura($usuario, $sal);
+                                setCookieUsuarioSegura($usuario, $sal, $conn);
 
                             } 
                             else $mensaje = "Error al editar";
