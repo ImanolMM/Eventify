@@ -106,16 +106,6 @@
     //cambiar database.sql, poner on update cascade
     // https://www.freecodecamp.org/news/creating-html-forms/
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        
-        //Evitar CSRF
-        $token = $_POST["token"];
-
-        if (!$token || $token !== $_SESSION['token']) {
-            // return 405 http status code
-            //header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
-            //exit;
-
-        }
 
         $nombre = $_POST["nombre"];
         $telef = $_POST["telefono"];
