@@ -48,6 +48,12 @@
     return $usuario;
   }
   ini_set('display_errors', 0);
+  $hostname = "db";
+  $username = "admin";
+  $password = "test";
+  $db = "database";
+
+  $conn = mysqli_connect($hostname,$username,$password,$db); 
   if(comprobarCookieUsuario($conn) && $_COOKIE["user"] != "invitado"){
     $perfil = '<a href="/perfil.php" class="material-symbols-outlined blanco">account_circle</a>';
     //cambiar el href de abajo para que redirija a logout.php
