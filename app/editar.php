@@ -38,28 +38,28 @@ if (isset($_POST['titulo'])) {
               <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
               <form class="form" action="/submit_eventos.php" id="form-registro" method="POST">
                   <div class="linea-form">
-                      <p>Titulo: ' . $row['titulo'] . '</p>
+                      <p>Titulo: ' . htmlspecialchars($row['titulo'], ENT_QUOTES)  . '</p>
                       <input type="text" name="titulo" value="' . htmlspecialchars($row['titulo'], ENT_QUOTES) . '">
                       <input type="hidden" name="viejoTitulo" value="' . htmlspecialchars($row['titulo'], ENT_QUOTES) . '">
                   </div>
                   <div class="linea-form">
-                      <p>Enunciado: ' . $row['enunciado'] . '</p>
+                      <p>Enunciado: ' . htmlspecialchars($row['enunciado'], ENT_QUOTES) . '</p>
                       <input type="text" name="enunciado" value="' . htmlspecialchars($row['enunciado'], ENT_QUOTES) . '">
                   </div>
                   <div class="linea-form">
-                      <p>Opcion1: ' . $row['opcion1'] . ' </p>
+                      <p>Opcion1: ' . htmlspecialchars($row['opcion1'], ENT_QUOTES)  . ' </p>
                       <input type="text" name="opcion1" value="' . htmlspecialchars($row['opcion1'], ENT_QUOTES) . '">
                   </div>
                   <div class="linea-form">
-                      <p>Resultado1: ' . $row['resultado1'] . '</p>
+                      <p>Resultado1: ' . htmlspecialchars($row['resultado1'], ENT_QUOTES)  . '</p>
                       <input type="text" name="resultado1" value="' . htmlspecialchars($row['resultado1'], ENT_QUOTES) . '">
                   </div>
                   <div class="linea-form">
-                      <p>Opcion2: ' . $row['opcion2'] . '</p>
+                      <p>Opcion2: ' . htmlspecialchars($row['opcion2'], ENT_QUOTES)  . '</p>
                       <input type="text" name="opcion2" value="' . htmlspecialchars($row['opcion2'], ENT_QUOTES) . '">
                   </div>
                   <div class="linea-form">
-                      <p>Resultado2: ' . $row['resultado2'] . '</p>
+                      <p>Resultado2: ' . htmlspecialchars($row['resultado2'], ENT_QUOTES)  . '</p>
                       <input type="text" name="resultado2" value="' . htmlspecialchars($row['resultado2'], ENT_QUOTES) . '">
                   </div>
                   <div class="linea-form">
