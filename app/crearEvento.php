@@ -17,15 +17,20 @@
       
       <div class="page">
         <?php
-          $hostname = "db";
-          $username = "admin";
-          $password = "test";
-          $db = "database";
 
-          $conn = mysqli_connect($hostname,$username,$password,$db);
-          if ($conn->connect_error) {
-            die("Database connection failed: " . $conn->connect_error);
-          }
+        session_start();
+        if (!isset($_SESSION['token'])){
+            $_SESSION['token'] = bin2hex(random_bytes(32));
+        }  
+        $hostname = "db";
+        $username = "admin";
+        $password = "test";
+        $db = "database";
+
+        $conn = mysqli_connect($hostname,$username,$password,$db);
+        if ($conn->connect_error) {
+        die("Database connection failed: " . $conn->connect_error);
+        }
 
 
 
@@ -40,7 +45,7 @@
                 Construya su evento aqui
             </p>
             <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
-            <form class="form" action="/submit_eventos.php" id="form-crear" method="POST">
+            <form class="form" action="/submitEventos.php" id="form-crear" method="POST">
                 <div class="linea-form">
                     <p>Titulo</p>
                     <input type="text" name="titulo">
@@ -65,6 +70,7 @@
                     <p>Resultado 2</p>
                     <input type="text" name="resultado2">
                 </div>
+                <input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?? '' ?>">
                 <button type="submit" class="boton">Crear</button>
             </form>
 

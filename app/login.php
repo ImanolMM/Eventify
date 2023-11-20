@@ -1,6 +1,5 @@
 <?php 
         include("navbar.php");
-        $_SESSION['token'] = md5(uniqid(mt_rand(), true));
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +19,12 @@
 
       <div class="page">
         <?php
+
+          session_start();
+          if (!isset($_SESSION['token'])){
+            $_SESSION['token'] = bin2hex(random_bytes(32));
+          }
+
           $hostname = "db";
           $username = "admin";
           $password = "test";

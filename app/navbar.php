@@ -1,5 +1,6 @@
 <?php
-  
+  use Firebase\JWT\JWT;
+  require_once('../vendor/autoload.php');
   
 
   // para incluir el navbar en una de las páginas php:
@@ -32,19 +33,19 @@
     }
   }
   function getUsuarioCookie($conn){
-    $hash=$_COOKIE["user"];
-    //get the user from the database
-    $consulta_usuario = "SELECT usuario,sal FROM usuarios WHERE cookie = ?";
-    $stmt = mysqli_prepare($conn, $consulta_usuario);
-    mysqli_stmt_bind_param($stmt, "s", $hash);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    //get usuario from databes with $result
-    while ($row = mysqli_fetch_array($result)) {
-      $usuario = $row['usuario'];
-      $sal = $row['sal'];
+    $jwt = $_COOKIE('user');
+    $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mIQyzqaS74Q4oR1ew=';
+    $token = JWT::decode($jwt, $secretKey, ['HS512']);
+    $now = new DateTimeImmutable();
+
+    if ($token->nbf > $now->getTimestamp() ||
+        $token->exp < $now->getTimestamp())
+    {
+        header('HTTP/1.1 401 Unauthorized');
+        exit;
+    }else{
+      $usr = $token->data->userName;
     }
-    return $usuario;
   }
   ini_set('display_errors', 0);
   $hostname = "db";

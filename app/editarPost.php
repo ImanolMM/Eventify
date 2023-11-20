@@ -22,7 +22,12 @@
           <img class="imagenWIP" src="imagenes/logoWIP.png"></img>
         </div>
         <?php
-          // phpinfo();
+          
+          session_start();
+          if (!isset($_SESSION['token'])){
+            $_SESSION['token'] = bin2hex(random_bytes(32));
+          }
+
           $hostname = "db";
           $username = "admin";
           $password = "test";
@@ -49,6 +54,7 @@
                 <div class='barraUsuario'>
                   <form action='/editar.php' method='POST'>
                     <input name='titulo' type='hidden' value='".htmlspecialchars($row['titulo'], ENT_QUOTES)."'>
+                    <input type='hidden' name='token' value='".$_SESSION['token']."'>
                     <button class='botonEditar'> Editar </button>
                   </form>
                   <button class='botonEliminar'> Eliminar evento </button>
