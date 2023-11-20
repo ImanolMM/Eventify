@@ -21,7 +21,7 @@ function init() {
           "titulo": `${eventoPadre.querySelector('.tituloEvento').innerHTML}`,
         });
   
-        fetch('/eliminar_evento.php', {
+        fetch('/eliminarEvento.php', {
           method: 'POST',
           body: urlencoded
         }).then(response => response.text())

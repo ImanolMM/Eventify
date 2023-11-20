@@ -94,5 +94,5 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
             $secretKey, // The signing key
             'HS512'     // Algorithm used to sign the token, see https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40#section-3
         );
-    }
+    }else echo $mensaje;
 ?>

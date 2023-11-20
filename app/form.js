@@ -46,7 +46,7 @@ function init() {
               if (res.status >= 200 && res.status <= 299) {
                 const jwt = await res.text();
                 // Guardamos el JWT como cookie
-                document.cookie = `JWT=${jwt}`;
+                document.cookie = `user=${jwt}`;
                 console.log("funciona!!:  ",jwt);
               } else {
                 // Handle errors
