@@ -1,5 +1,5 @@
 <?php
-    
+            include("functionsJWT.php");
             // https://www.freecodecamp.org/news/creating-html-forms/
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
 

@@ -1,5 +1,16 @@
 <?php
-    include("navbar.php");
+    // Evitar CSRF
+    session_start();
+    $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
+
+    if (!$token || $token !== $_SESSION['token']) {
+        // return 405 http status code
+        //header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
+        //exit;
+    }
+
+    include("functionsJWT.php"); 
+    
     
     function comprobarNombre($nombre) {
         // Solo letras y espacios
@@ -165,12 +176,9 @@
                 $ipAddress = $_SERVER['REMOTE_ADDR'];
                 logFailedSignUpAttempt($usuario, $ipAddress, $motivo, "signup");
             }
-
             
-            header("Location: /");
-            exit();
         }else{
-            if($tipo === "signin" && $existeUsuario && getUsuarioCookie() !== "invitado"){
+            if($tipo === "signin" && $existeUsuario){
 
                 // iniciar sesión, comprobar contraseña
 
@@ -296,12 +304,13 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <?php 
+        <?php
             include("navbar.php");
         ?>
         <div class="page mensaje">
             <?php
-                echo $mensaje; 
+                if($mensaje) echo $mensaje;
+                else echo $motivo;
             ?> 
         </div>
     </body>

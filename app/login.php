@@ -1,4 +1,6 @@
 <?php 
+        session_start();
+        include("functionsJWT.php"); 
         include("navbar.php");
 ?>
 
@@ -20,7 +22,6 @@
       <div class="page">
         <?php
 
-          session_start();
           if (!isset($_SESSION['token'])){
             $_SESSION['token'] = bin2hex(random_bytes(32));
           }
@@ -49,7 +50,7 @@
                 A continuación se muestran ejemplos para cada campo
             </p>
             <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
-            <form class="form" id="form-registro" method="POST">
+            <form class="form" id="form-registro" action="/submit.php" method="POST">
                 <div class="linea-form" id="linea-nombre">
                     <p>Nombre y Apellidos: Jon Tom</p>
                     <input type="text" name="nombre">

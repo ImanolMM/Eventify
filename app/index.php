@@ -1,4 +1,5 @@
 <?php 
+        include("functionsJWT.php"); 
         include("navbar.php");
 ?>
 <!DOCTYPE html>

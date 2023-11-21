@@ -1,5 +1,6 @@
 <?php
-include("navbar.php");
+include("functionsJWT.php");
+include("navbar.php");  
 
 if (isset($_POST['titulo'])) {
 
@@ -33,9 +34,10 @@ if (isset($_POST['titulo'])) {
     $stmt->execute();
 
     $result = $stmt->get_result();
-
     while ($row = $result->fetch_assoc()) {
-        echo '<div class="formbox">
+        echo '
+            <div class="formbox">
+            <link rel="stylesheet" href="editar.css">
                 <div class="form-title">
                     Edición de evento
                 </div>

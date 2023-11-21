@@ -1,5 +1,7 @@
 <?php 
-        include("navbar.php");
+  session_start();
+  include("functionsJWT.php"); 
+  include("navbar.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +25,7 @@
         </div>
         <?php
           
-          session_start();
+          
           if (!isset($_SESSION['token'])){
             $_SESSION['token'] = bin2hex(random_bytes(32));
           }
@@ -59,8 +61,8 @@
                   </form>
                   <button class='botonEliminar'> Eliminar evento </button>
                 </div>
-                <h2 class='tituloEvento no-overflow'>{".htmlspecialchars($row['titulo'], ENT_QUOTES) ."}</h2>
-                <p class='descripcionEvento no-overflow'>{".htmlspecialchars($row['enunciado'], ENT_QUOTES) ."}</p>
+                <h2 class='tituloEvento no-overflow'>".htmlspecialchars($row['titulo'], ENT_QUOTES) ."</h2>
+                <p class='descripcionEvento no-overflow'>".htmlspecialchars($row['enunciado'], ENT_QUOTES) ."</p>
             </div>
             ";
           }

@@ -1,5 +1,6 @@
 <?php 
-        include("navbar.php"); 
+        session_start();
+        include("functionsJWT.php"); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,7 @@
       <div class="page">
         <?php
 
-        session_start();
+        
         if (!isset($_SESSION['token'])){
             $_SESSION['token'] = bin2hex(random_bytes(32));
         }  
@@ -36,7 +37,9 @@
 
         $query = mysqli_query($conn, "SELECT * FROM usuarios")
           or die (mysqli_error($conn));
+        include("navbar.php");
         ?>
+        
         <div class="formbox">
             <div class="form-title">
                 Crear evento
