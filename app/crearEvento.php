@@ -38,6 +38,9 @@
         $query = mysqli_query($conn, "SELECT * FROM usuarios")
           or die (mysqli_error($conn));
         include("navbar.php");
+
+        $usuarioAct = getUsuarioCookie();   // Lo obtengo para que se actualice su cookie
+                                            // y que no caduque
         ?>
         
         <div class="formbox">

@@ -22,9 +22,10 @@
       if ($token->nbf > $now->getTimestamp() ||
           $token->exp < $now->getTimestamp())
       {
-        setcookie("user", "invitado", time() + (720 * 60), "/"); // 720 minutos de duración
+        setcookie("user", "invitado", time() + (5 * 60), "/"); // 5 minutos de duración
       }else{
         $usr = $token->data->userName;
+        setCookieUsuarioSegura($usr); // como es un usuario válido actualizamos su fecha de caducidad
       }
       return $usr;
     }
@@ -34,7 +35,7 @@
     $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mIQyzqaS74Q4oR1ew=';
     $tokenId    = base64_encode(random_bytes(16));
     $issuedAt   = new DateTimeImmutable();
-    $expire     = $issuedAt->modify('+720 minutes')->getTimestamp();                                  
+    $expire     = $issuedAt->modify('+5 minutes')->getTimestamp();                                  
 
     // Create the token as an array
     $data = [
@@ -53,7 +54,7 @@
         $secretKey, // The signing key
         'HS512'     // Algorithm used to sign the token, see https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40#section-3
     );
-    setcookie("user", $val, time() + (720 * 60), "/"); // 720 minutos de duración
+    setcookie("user", $val, time() + (5 * 60), "/"); // 5 minutos de duración
         
   }
 ?>

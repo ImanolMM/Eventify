@@ -176,7 +176,8 @@
                 $ipAddress = $_SERVER['REMOTE_ADDR'];
                 logFailedSignUpAttempt($usuario, $ipAddress, $motivo, "signup");
             }
-            
+            header("Location: /");
+            exit();
         }else{
             if($tipo === "signin" && $existeUsuario){
 
