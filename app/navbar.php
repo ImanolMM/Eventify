@@ -1,52 +1,62 @@
 <?php
+
+
   use Firebase\JWT\JWT;
-  require_once('../vendor/autoload.php');
-  
+  require_once('./vendor/autoload.php');
 
   // para incluir el navbar en una de las páginas php:
   // https://stackoverflow.com/questions/8450696/execute-a-php-script-from-another-php-script
-  function comprobarCookieUsuario($conn) {
-    $cookie_name = "user";
-    if(!isset($_COOKIE[$cookie_name])) {
-        return false;
-    } 
-    elseif ($_COOKIE[$cookie_name] === "invitado") {
-        return true;
-    }
-    else {
-        $consulta_usuario = "SELECT usuario,sal FROM usuarios WHERE cookie = ?";
-        $stmt = mysqli_prepare($conn, $consulta_usuario);
-        mysqli_stmt_bind_param($stmt, "s", $usuario);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-
-        while ($row = mysqli_fetch_array($result)) {
-            $usuario = $row['usuario'];
-            $sal = $row['sal'];
-        }
-        $usersal = $usuario . $sal;
-        if (password_verify($usersal, $_COOKIE[$cookie_name])) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+  function comprobarCookieUsuario() {
+    $usr = $_COOKIE("user");
+    return isset($usr);
   }
-  function getUsuarioCookie($conn){
+
+  function getUsuarioCookie(){
     $jwt = $_COOKIE('user');
-    $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mIQyzqaS74Q4oR1ew=';
-    $token = JWT::decode($jwt, $secretKey, ['HS512']);
-    $now = new DateTimeImmutable();
+    $usr = "invitado";
+    if($jwt !== "invitado"){
+      $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mIQyzqaS74Q4oR1ew=';
+      $token = JWT::decode($jwt, $secretKey, ['HS512']);
+      $now = new DateTimeImmutable();
 
-    if ($token->nbf > $now->getTimestamp() ||
-        $token->exp < $now->getTimestamp())
-    {
-        header('HTTP/1.1 401 Unauthorized');
-        exit;
-    }else{
-      $usr = $token->data->userName;
+      if ($token->nbf > $now->getTimestamp() ||
+          $token->exp < $now->getTimestamp())
+      {
+        setcookie("user", "invitado", time() + (720 * 60), "/"); // 720 minutos de duración
+      }else{
+        $usr = $token->data->userName;
+      }
+      return $usr;
     }
   }
+
+  function setCookieUsuarioSegura($usuario) {
+    $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mIQyzqaS74Q4oR1ew=';
+    $tokenId    = base64_encode(random_bytes(16));
+    $issuedAt   = new DateTimeImmutable();
+    $expire     = $issuedAt->modify('+720 minutes')->getTimestamp();                                  
+
+    // Create the token as an array
+    $data = [
+        'iat'  => $issuedAt->getTimestamp(),    // Issued at: time when the token was generated
+        'jti'  => $tokenId,                     // Json Token Id: an unique identifier for the token
+        'nbf'  => $issuedAt->getTimestamp(),    // Not before
+        'exp'  => $expire,                      // Expire
+        'data' => [                             // Data related to the signer user
+            'userName' => $usuario,            // User name
+        ]
+    ];
+
+    // Encode the array to a JWT string.
+    $val = JWT::encode(
+        $data,      //Data to be encoded in the JWT
+        $secretKey, // The signing key
+        'HS512'     // Algorithm used to sign the token, see https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40#section-3
+    );
+    setcookie("user", $val, time() + (720 * 60), "/"); // 720 minutos de duración
+        
+  }
+
   ini_set('display_errors', 0);
   $hostname = "db";
   $username = "admin";
@@ -54,7 +64,7 @@
   $db = "database";
 
   $conn = mysqli_connect($hostname,$username,$password,$db); 
-  if(comprobarCookieUsuario($conn) && $_COOKIE["user"] != "invitado"){
+  if(comprobarCookieUsuario() && $_COOKIE["user"] !== "invitado"){
     $perfil = '<a href="/perfil.php" class="material-symbols-outlined blanco">account_circle</a>';
     //cambiar el href de abajo para que redirija a logout.php
     $logOut = '<a href="logout.php"class="material-symbols-outlined blanco">logout</a>';

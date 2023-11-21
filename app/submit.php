@@ -1,27 +1,6 @@
 <?php
-    function comprobarCookie($cookie_name) {
-        $cookie_name = "user";
-        if(!isset($_COOKIE[$cookie_name])) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+    include("navbar.php");
     
-    function setCookieUsuarioSegura($usuario, $sal, $conn) {
-        $cookie_name = "user";
-        $usersal = $usuario . $sal;
-        $cookie_value = password_hash($usersal, PASSWORD_BCRYPT);
-        $consulta = "UPDATE usuarios SET cookie = ? WHERE usuario = ?";
-        $tipos = "ss";
-        $parametros = array($cookie_value,$usuario);
-        if($stmt = mysqli_prepare($conn, $consulta)){
-            $stmt->bind_param($tipos, ...$parametros);
-            $stmt->execute();
-            $stmt->close();
-            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 1 dia de duración
-        }
-    }
     function comprobarNombre($nombre) {
         // Solo letras y espacios
         if (preg_match('/^[A-Za-z\sñÑáéíóúÁÉÍÓÚçÇ]+$/', $nombre)) {
@@ -180,7 +159,7 @@
                     $stmt->close();
                     $mensaje = "Usuario creado";
                     // https://www.w3schools.com/php/func_network_setcookie.asp
-                    setCookieUsuarioSegura($usuario, $sal, $conn);
+                    setCookieUsuarioSegura($usuario);
                 }
             }else{
                 $ipAddress = $_SERVER['REMOTE_ADDR'];
@@ -191,7 +170,7 @@
             header("Location: /");
             exit();
         }else{
-            if($tipo === "signin" && !$error){
+            if($tipo === "signin" && $existeUsuario && getUsuarioCookie() !== "invitado"){
 
                 // iniciar sesión, comprobar contraseña
 
@@ -221,7 +200,7 @@
                 } 
                 if ($passCorrecta && $intentos < 5) {
                     $mensaje = "Inicio de sesión correcto";
-                    setCookieUsuarioSegura($usuario, $sal, $conn);
+                    setCookieUsuarioSegura($usuario);
                     header("Location: /");
                     exit();
                 }
@@ -249,8 +228,8 @@
                 }
                 
                 
-            }else if($tipo === "edit"){
-                if(comprobarCookieUsuario($conn)){
+            }else if($tipo === "edit" && getUsuarioCookie() !== "invitado"){
+                if(comprobarCookieUsuario()){
                     $error = false;
                     $motivo = "";
                     if (!comprobarEmail($email)){
@@ -270,7 +249,7 @@
                         $motivo = "Contraseña no válida";
                     }
                     if (!$error){
-                        $viejoUsuario = getUsuarioCookie($conn);
+                        $viejoUsuario = getUsuarioCookie();
 
                         $consulta = "UPDATE usuarios SET nombre = ?, telef = ?, dni = ?, email = ?, nacimiento = ?, passwd = ?, sal = ? WHERE usuario = ?";
                         $tipos = "sissssss";
@@ -283,7 +262,7 @@
                             if($stmt->execute()){
 
                                 $mensaje = "Usuario editado";
-                                setCookieUsuarioSegura($usuario, $sal, $conn);
+                                setCookieUsuarioSegura($usuario);
 
                             } 
                             else $mensaje = "Error al editar";

@@ -39,8 +39,8 @@
           }
 
           
-          if(comprobarCookieUsuario($conn)){
-            $usuario = getUsuarioCookie($conn);
+          if(comprobarCookieUsuario()){
+            $usuario = getUsuarioCookie();
           }else{
             $usuario = "invitado";
           }

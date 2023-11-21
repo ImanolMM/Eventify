@@ -33,25 +33,8 @@ function init() {
         aceptado = aceptado && comprobarUsuario(usuario)
 
         if(aceptado){
-            const urlencoded = new URLSearchParams({
-                "usuario": `${usuario}`,
-                "passwd": `${passwd}`,
-              });
-
-            const res = await fetch('/authenticate.php', {
-                method: 'POST',
-                body: urlencoded
-              });
-        
-              if (res.status >= 200 && res.status <= 299) {
-                const jwt = await res.text();
-                // Guardamos el JWT como cookie
-                document.cookie = `user=${jwt}`;
-                console.log("funciona!!:  ",jwt);
-              } else {
-                // Handle errors
-                console.log(res.status, res.statusText);
-              }
+            var form = document.getElementById("form-registro")
+            form.submit()
         }
     })
 
