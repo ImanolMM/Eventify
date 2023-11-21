@@ -1,5 +1,8 @@
 <?php 
   session_start();
+  if (!isset($_SESSION['token'])){
+    $_SESSION['token'] = bin2hex(random_bytes(32));
+  }
   include("functionsJWT.php"); 
   include("navbar.php");
 ?>
@@ -26,9 +29,7 @@
         <?php
           
           
-          if (!isset($_SESSION['token'])){
-            $_SESSION['token'] = bin2hex(random_bytes(32));
-          }
+          
 
           $hostname = "db";
           $username = "admin";
@@ -55,13 +56,13 @@
             <div class='evento'>
                 <div class='barraUsuario'>
                   <form action='/editar.php' method='POST'>
-                    <input name='titulo' type='hidden' value='".htmlspecialchars($row['titulo'], ENT_QUOTES)."'>
-                    <input type='hidden' name='token' value='".$_SESSION['token']."'>
+                    <input id='valtitulo' name='titulo' type='hidden' value='".htmlspecialchars($row['titulo'], ENT_QUOTES)."'>
                     <button class='botonEditar'> Editar </button>
                   </form>
                   <button class='botonEliminar'> Eliminar evento </button>
                 </div>
                 <h2 class='tituloEvento no-overflow'>".htmlspecialchars($row['titulo'], ENT_QUOTES) ."</h2>
+                <input id='valtoken' type='hidden' name='token' value='".$_SESSION['token']."'>
                 <p class='descripcionEvento no-overflow'>".htmlspecialchars($row['enunciado'], ENT_QUOTES) ."</p>
             </div>
             ";

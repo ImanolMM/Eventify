@@ -1,4 +1,6 @@
-<?php 
+<?php
+  session_start(); 
+  include("functionsJWT.php");
   include("navbar.php");
 ?>
 <!DOCTYPE html>
@@ -24,7 +26,7 @@
       </div>
       <?php
 
-        session_start();
+        
         if (!isset($_SESSION['token'])){
           $_SESSION['token'] = bin2hex(random_bytes(32));
         }

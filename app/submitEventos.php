@@ -1,10 +1,10 @@
 <?php
+            session_start();
             include("functionsJWT.php");
             // https://www.freecodecamp.org/news/creating-html-forms/
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Evitar CSRF
-                session_start();
                 $token = filter_input(INPUT_POST, 'token', FILTER_SANITIZE_STRING);
 
                 if (!$token || $token !== $_SESSION['token']) {
@@ -65,6 +65,7 @@
                 header("Location: /"); // Redirigimos a inicio si no es post
                 exit();
              }
+             include("navbar.php");
             ?>
 <!DOCTYPE html>
 <html>

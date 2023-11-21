@@ -19,6 +19,7 @@ function init() {
   
         const urlencoded = new URLSearchParams({
           "titulo": `${eventoPadre.querySelector('.tituloEvento').innerHTML}`,
+          "token": `${eventoPadre.querySelector('#valtoken').value}`,
         });
   
         fetch('/eliminarEvento.php', {

@@ -1,6 +1,5 @@
 <?php
 include("functionsJWT.php");
-include("navbar.php");  
 
 if (isset($_POST['titulo'])) {
 
@@ -34,10 +33,12 @@ if (isset($_POST['titulo'])) {
     $stmt->execute();
 
     $result = $stmt->get_result();
+    include("navbar.php");  
     while ($row = $result->fetch_assoc()) {
         echo '
             <div class="formbox">
             <link rel="stylesheet" href="editar.css">
+            <link rel="stylesheet" href="crearEvento.css">
                 <div class="form-title">
                     Edición de evento
                 </div>
@@ -70,11 +71,11 @@ if (isset($_POST['titulo'])) {
                     </div>
                     <div class="linea-form">
                         <input type="hidden" value="edit" name="flagedit">
+                        <input type="hidden" name="token" value="'.$_SESSION['token'].'">
                         <p>
                         <button type="submit" class="boton" id="botonRegistro">Editar</button>
                         </p>                  
                     </div>
-                    <input type="hidden" name="token" value='.$_SESSION['token'].'>
                 </form>
             </div>';
   }

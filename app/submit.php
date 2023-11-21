@@ -5,8 +5,8 @@
 
     if (!$token || $token !== $_SESSION['token']) {
         // return 405 http status code
-        //header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
-        //exit;
+        header($_SERVER['SERVER_PROTOCOL'] . ' 405 Method Not Allowed');
+        exit;
     }
 
     include("functionsJWT.php"); 
@@ -270,7 +270,7 @@
                             if($stmt->execute()){
 
                                 $mensaje = "Usuario editado";
-                                setCookieUsuarioSegura($usuario);
+                                setCookieUsuarioSegura($viejoUsuario);
 
                             } 
                             else $mensaje = "Error al editar";
