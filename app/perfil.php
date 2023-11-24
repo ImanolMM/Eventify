@@ -1,29 +1,6 @@
-<?php
-  session_start(); 
-  include("functionsJWT.php");
-?>
-<!DOCTYPE html>
-<html>
-  <head>
-      <title>Eventify</title>
-      <link rel="stylesheet" href="styles.css">
-      <link rel="stylesheet" href="perfil.css">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-
-      <!-- Fuente de letra roboto de Google  https://fonts.google.com/specimen/Roboto -->
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  </head>
-  <body>
-    
-    <div class="page">
-      <div class="cabecera">
-        <img class="imagenSV" src="imagenes/logoSV.png"></img>
-        <h1 class="tituloInicio">Editar Perfil</h1>
-        <img class="imagenWIP" src="imagenes/logoWIP.png"></img>
-      </div>
       <?php
+      session_start(); 
+      include("functionsJWT.php");
 
         
         if (!isset($_SESSION['token'])){
@@ -53,6 +30,27 @@
         $result = $stmt->get_result();
 
         include("navbar.php");
+        echo '<!DOCTYPE html>
+        <html>
+          <head>
+              <title>Eventify</title>
+              <link rel="stylesheet" href="styles.css">
+              <link rel="stylesheet" href="perfil.css">
+              <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+              <!-- Fuente de letra roboto de Google  https://fonts.google.com/specimen/Roboto -->
+              <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+              <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+              <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+          </head>
+          <body>
+            
+            <div class="page">
+              <div class="cabecera">
+                <img class="imagenSV" src="imagenes/logoSV.png"></img>
+                <h1 class="tituloInicio">Editar Perfil</h1>
+                <img class="imagenWIP" src="imagenes/logoWIP.png"></img>
+              </div>';
         while ($row = $result->fetch_assoc()) {
           echo '<div class="formbox">
                   <div class="form-title">

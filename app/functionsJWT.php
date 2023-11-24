@@ -14,8 +14,8 @@
   function getUsuarioCookie(){
     $usr = "invitado";
     if(comprobarCookieUsuario()){
+      $jwt = $_COOKIE["user"];
       if($jwt !== "invitado"){
-        $jwt = $_COOKIE["user"];
         $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mIQyzqaS74Q4oR1ew=';
         $token = JWT::decode($jwt, $secretKey, ['HS512']);
         $now = new DateTimeImmutable();
