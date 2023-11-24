@@ -2,14 +2,22 @@
 include("functionsJWT.php");
 
 if (isset($_POST['titulo'])) {
-    session_set_cookie_params([
-        'lifetime' => 0,    // Duración de la sesión (0 para sesión hasta que se cierre el navegador)
-        'path' => '/',      // Ruta para la cual la cookie está disponible
-        'domain' => '',     // Dominio para el cual la cookie está disponible (dejar en blanco para el dominio actual)
-        'secure' => false,   // Si true, solo se enviará la cookie sobre conexiones seguras (HTTPS)
-        'httponly' => true, // La cookie solo es accesible desde el lado del servidor
-        'samesite' => 'Restrict' 
-    ]);
+    $secure = false; // solo https
+    $httponly = true; // no se puede acceder  a la cookie con javascript
+    $samesite = 'Restrict';
+
+    if(PHP_VERSION_ID < 70300) {
+        session_set_cookie_params($maxlifetime, '/; samesite='.$samesite, $_SERVER['HTTP_HOST'], $secure, $httponly);
+    } else {
+        session_set_cookie_params([
+            'lifetime' => $maxlifetime,
+            'path' => '/',
+            'domain' => $_SERVER['HTTP_HOST'],
+            'secure' => $secure,
+            'httponly' => $httponly,
+            'samesite' => $samesite
+        ]);
+    }
     session_start();
     if (!isset($_SESSION['token'])){
         $_SESSION['token'] = bin2hex(random_bytes(32));
@@ -44,36 +52,36 @@ if (isset($_POST['titulo'])) {
     while ($row = $result->fetch_assoc()) {
         echo '
             <div class="formbox">
-            <link rel="stylesheet" href="editar.css">
-            <link rel="stylesheet" href="crearEvento.css">
+            <link rel="stylesheet" href="styles.css">
+            <link rel="stylesheet" href="perfil.css">
                 <div class="form-title">
                     Edición de evento
                 </div>
                 <!-- Alinear inputs https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html -->
                 <form class="form" action="/submitEventos.php" id="form-registro" method="POST">
                     <div class="linea-form">
-                        <p>Titulo: ' . htmlspecialchars($row['titulo'], ENT_QUOTES)  . '</p>
+                        <p class="no-overflow">Titulo: ' . htmlspecialchars($row['titulo'], ENT_QUOTES)  . '</p>
                         <input type="text" name="titulo" value="' . htmlspecialchars($row['titulo'], ENT_QUOTES) . '">
                         <input type="hidden" name="viejoTitulo" value="' . htmlspecialchars($row['titulo'], ENT_QUOTES) . '">
                     </div>
                     <div class="linea-form">
-                        <p>Enunciado: ' . htmlspecialchars($row['enunciado'], ENT_QUOTES) . '</p>
+                        <p class="no-overflow">Enunciado: ' . htmlspecialchars($row['enunciado'], ENT_QUOTES) . '</p>
                         <input type="text" name="enunciado" value="' . htmlspecialchars($row['enunciado'], ENT_QUOTES) . '">
                     </div>
                     <div class="linea-form">
-                        <p>Opcion1: ' . htmlspecialchars($row['opcion1'], ENT_QUOTES)  . ' </p>
+                        <p class="no-overflow">Opcion1: ' . htmlspecialchars($row['opcion1'], ENT_QUOTES)  . ' </p>
                         <input type="text" name="opcion1" value="' . htmlspecialchars($row['opcion1'], ENT_QUOTES) . '">
                     </div>
                     <div class="linea-form">
-                        <p>Resultado1: ' . htmlspecialchars($row['resultado1'], ENT_QUOTES)  . '</p>
+                        <p class="no-overflow">Resultado1: ' . htmlspecialchars($row['resultado1'], ENT_QUOTES)  . '</p>
                         <input type="text" name="resultado1" value="' . htmlspecialchars($row['resultado1'], ENT_QUOTES) . '">
                     </div>
                     <div class="linea-form">
-                        <p>Opcion2: ' . htmlspecialchars($row['opcion2'], ENT_QUOTES)  . '</p>
+                        <p class="no-overflow">Opcion2: ' . htmlspecialchars($row['opcion2'], ENT_QUOTES)  . '</p>
                         <input type="text" name="opcion2" value="' . htmlspecialchars($row['opcion2'], ENT_QUOTES) . '">
                     </div>
                     <div class="linea-form">
-                        <p>Resultado2: ' . htmlspecialchars($row['resultado2'], ENT_QUOTES)  . '</p>
+                        <p class="no-overflow">Resultado2: ' . htmlspecialchars($row['resultado2'], ENT_QUOTES)  . '</p>
                         <input type="text" name="resultado2" value="' . htmlspecialchars($row['resultado2'], ENT_QUOTES) . '">
                     </div>
                     <div class="linea-form">

@@ -21,7 +21,7 @@
 }
 
 .form{
-    height: 100%;
+    width: 100%;
     display: table;
     margin: 0 auto;
     table-layout: fixed;
