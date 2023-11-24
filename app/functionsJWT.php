@@ -23,16 +23,16 @@
         if ($token->nbf > $now->getTimestamp() ||
             $token->exp < $now->getTimestamp())
         {
-          setcookie("user", "invitado", time() + (5 * 60), "/"); // 5 minutos de duración
+          setcookie("user", "invitado", time() + (5 * 60), "/; SameSite=Strict; HttpOnly"); // 5 minutos de duración
         }else{
           $usr = $token->data->userName;
           setCookieUsuarioSegura($usr); // como es un usuario válido actualizamos su fecha de caducidad
         }
       }else{
-        setcookie("user", "invitado", time() + (5 * 60), "/"); // actualizar cookie invitado
+        setcookie("user", "invitado", time() + (5 * 60), "/; SameSite=Strict; HttpOnly"); // actualizar cookie invitado
       }
     }else{
-      setcookie("user", "invitado", time() + (5 * 60), "/"); // 5 minutos de duración
+      setcookie("user", "invitado", time() + (5 * 60), "/; SameSite=Strict; HttpOnly"); // 5 minutos de duración
     }
     return $usr;
   }
@@ -60,7 +60,7 @@
         $secretKey, // The signing key
         'HS512'     // Algorithm used to sign the token, see https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40#section-3
     );
-    setcookie("user", $val, time() + (5 * 60), "/"); // 5 minutos de duración
+    setcookie("user", $val, time() + (5 * 60), "/; SameSite=Strict; HttpOnly"); // 5 minutos de duración
         
   }
 ?>
