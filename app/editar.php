@@ -4,10 +4,10 @@ include("functionsJWT.php");
 if (isset($_POST['titulo'])) {
     $secure = false; // solo https
     $httponly = true; // no se puede acceder  a la cookie con javascript
-    $samesite = 'Restrict';
+    $samesite = 'Strict';
 
     if(PHP_VERSION_ID < 70300) {
-        session_set_cookie_params($maxlifetime, '/; samesite='.$samesite, $_SERVER['HTTP_HOST'], $secure, $httponly);
+        session_set_cookie_params($maxlifetime, '/; SameSite='.$samesite, $_SERVER['HTTP_HOST'], $secure, $httponly);
     } else {
         session_set_cookie_params([
             'lifetime' => $maxlifetime,
@@ -15,7 +15,7 @@ if (isset($_POST['titulo'])) {
             'domain' => $_SERVER['HTTP_HOST'],
             'secure' => $secure,
             'httponly' => $httponly,
-            'samesite' => $samesite
+            'SameSite' => $samesite
         ]);
     }
     session_start();

@@ -1,4 +1,20 @@
 <?php
+    $secure = false; // solo https
+    $httponly = true; // no se puede acceder  a la cookie con javascript
+    $samesite = 'Strict';
+
+    if(PHP_VERSION_ID < 70300) {
+        session_set_cookie_params($maxlifetime, '/; SameSite='.$samesite, $_SERVER['HTTP_HOST'], $secure, $httponly);
+    } else {
+        session_set_cookie_params([
+            'lifetime' => $maxlifetime,
+            'path' => '/',
+            'domain' => $_SERVER['HTTP_HOST'],
+            'secure' => $secure,
+            'httponly' => $httponly,
+            'SameSite' => $samesite
+        ]);
+    }
     session_start();
     include("functionsJWT.php");
     include("navbar.php");
