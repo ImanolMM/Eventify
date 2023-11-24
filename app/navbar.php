@@ -10,9 +10,9 @@
 
   $conn = mysqli_connect($hostname,$username,$password,$db); 
   if(comprobarCookieUsuario() && $_COOKIE["user"] !== "invitado"){
-    $perfil = '<a href="/perfil.php" class="material-symbols-outlined blanco">account_circle</a>';
+    $perfil = '<a href="/perfil.php"><img src="./imagenes/perfil.svg" width="35" height="35" alt="perfil"></a>';
     //cambiar el href de abajo para que redirija a logout.php
-    $logOut = '<a href="logout.php"class="material-symbols-outlined blanco">logout</a>';
+    $logOut = '<a href="logout.php"><img src="./imagenes/logout.svg" width="35" height="35" alt="cerrar sesion"></a>';
   }else{
     $perfil = '<a class="linkLogin" href=/login.php>Iniciar sesión</a>';
     $logOut = "";

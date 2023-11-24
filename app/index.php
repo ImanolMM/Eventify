@@ -46,7 +46,7 @@
                 </div>
                 <h2 class='tituloEvento no-overflow'>" .htmlspecialchars($row['titulo'],ENT_QUOTES)."</h2>
                 <p class='descripcionEvento'>".htmlspecialchars($row['enunciado'], ENT_QUOTES)."</p>
-                <span class='material-symbols-outlined botonDescarga'> download</span>
+                <span class='botonDescarga'> <img src='./imagenes/download.svg' width='25' height='25' alt='descargar'></span>
                 <!--chapuza-->
                 <input type='hidden' class='opcion1' value='".htmlspecialchars($row['opcion1'], ENT_QUOTES)."'>
                 <input type='hidden' class='resultado1' value='".htmlspecialchars($row['resultado1'], ENT_QUOTES)."'>
