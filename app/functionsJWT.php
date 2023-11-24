@@ -14,7 +14,7 @@
   function getUsuarioCookie(){
     $jwt = $_COOKIE["user"];
     $usr = "invitado";
-    if($jwt !== "invitado"){
+    if(comprobarCookieUsuario() && $jwt !== "invitado"){
       $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mIQyzqaS74Q4oR1ew=';
       $token = JWT::decode($jwt, $secretKey, ['HS512']);
       $now = new DateTimeImmutable();
@@ -27,8 +27,11 @@
         $usr = $token->data->userName;
         setCookieUsuarioSegura($usr); // como es un usuario válido actualizamos su fecha de caducidad
       }
-      return $usr;
+      
+    }else{
+      setcookie("user", "invitado", time() + (5 * 60), "/"); // 5 minutos de duración
     }
+    return $usr;
   }
 
   function setCookieUsuarioSegura($usuario) {

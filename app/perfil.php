@@ -1,7 +1,6 @@
 <?php
   session_start(); 
   include("functionsJWT.php");
-  include("navbar.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,6 +52,7 @@
         $stmt->execute();
         $result = $stmt->get_result();
 
+        include("navbar.php");
         while ($row = $result->fetch_assoc()) {
           echo '<div class="formbox">
                   <div class="form-title">
