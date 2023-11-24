@@ -1,4 +1,12 @@
-<?php 
+<?php   
+        session_set_cookie_params([
+          'lifetime' => 0,    // Duración de la sesión (0 para sesión hasta que se cierre el navegador)
+          'path' => '/',      // Ruta para la cual la cookie está disponible
+          'domain' => '',     // Dominio para el cual la cookie está disponible (dejar en blanco para el dominio actual)
+          'secure' => false,   // Si true, solo se enviará la cookie sobre conexiones seguras (HTTPS)
+          'httponly' => true, // La cookie solo es accesible desde el lado del servidor
+          'samesite' => 'Restrict' 
+        ]);
         session_start();
         include("functionsJWT.php"); 
         include("navbar.php");
