@@ -7,27 +7,30 @@
   // para incluir el navbar en una de las páginas php:
   // https://stackoverflow.com/questions/8450696/execute-a-php-script-from-another-php-script
   function comprobarCookieUsuario() {
-    $usr = $_COOKIE["user"];
-    return isset($usr);
+    $hayUsr = isset($_COOKIE["user"]);
+    return $hayUsr;
   }
 
   function getUsuarioCookie(){
-    $jwt = $_COOKIE["user"];
     $usr = "invitado";
-    if(comprobarCookieUsuario() && $jwt !== "invitado"){
-      $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mIQyzqaS74Q4oR1ew=';
-      $token = JWT::decode($jwt, $secretKey, ['HS512']);
-      $now = new DateTimeImmutable();
+    if(comprobarCookieUsuario()){
+      if($jwt !== "invitado"){
+        $jwt = $_COOKIE["user"];
+        $secretKey  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mIQyzqaS74Q4oR1ew=';
+        $token = JWT::decode($jwt, $secretKey, ['HS512']);
+        $now = new DateTimeImmutable();
 
-      if ($token->nbf > $now->getTimestamp() ||
-          $token->exp < $now->getTimestamp())
-      {
-        setcookie("user", "invitado", time() + (5 * 60), "/"); // 5 minutos de duración
+        if ($token->nbf > $now->getTimestamp() ||
+            $token->exp < $now->getTimestamp())
+        {
+          setcookie("user", "invitado", time() + (5 * 60), "/"); // 5 minutos de duración
+        }else{
+          $usr = $token->data->userName;
+          setCookieUsuarioSegura($usr); // como es un usuario válido actualizamos su fecha de caducidad
+        }
       }else{
-        $usr = $token->data->userName;
-        setCookieUsuarioSegura($usr); // como es un usuario válido actualizamos su fecha de caducidad
+        setcookie("user", "invitado", time() + (5 * 60), "/"); // actualizar cookie invitado
       }
-      
     }else{
       setcookie("user", "invitado", time() + (5 * 60), "/"); // 5 minutos de duración
     }
