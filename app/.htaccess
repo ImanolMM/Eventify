@@ -6,3 +6,10 @@
 	Header unset Server
 	Header unset X-Powered-By
 </IfModule>
+<Files "composer.json">
+    Deny from all
+</Files>
+<Files "composer.lock">
+    Deny from all
+</Files>
+RedirectMatch 403 ^/vendor/.*$
