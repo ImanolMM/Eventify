@@ -35,7 +35,7 @@ phpmyadmin:
     MYSQL_DATABASE: database
 
 composer:
-  image: composer/composer:2.2
+  image: composer/composer@sha256:d79e1a62bfecc274f6eddd9f64be151813e863fdd8572d184209eca8dd21e9fc
   ports:
     - "9001:9000"
   volumes:
