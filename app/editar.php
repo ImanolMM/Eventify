@@ -7,12 +7,12 @@ if (isset($_POST['titulo'])) {
     $samesite = 'Strict';
 
     if(PHP_VERSION_ID < 70300) {
-        session_set_cookie_params($maxlifetime, '/; SameSite='.$samesite, $_SERVER['HTTP_HOST'], $secure, $httponly);
+        session_set_cookie_params($maxlifetime, '/; SameSite='.$samesite, '', $secure, $httponly);
     } else {
         session_set_cookie_params([
             'lifetime' => $maxlifetime,
             'path' => '/',
-            'domain' => $_SERVER['HTTP_HOST'],
+            'domain' => '',
             'secure' => $secure,
             'httponly' => $httponly,
             'SameSite' => $samesite
