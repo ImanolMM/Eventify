@@ -301,7 +301,8 @@
                 }
                 
             }else{
-                $mensaje = "Ya existe un usuario con ese nombre de usuario";
+                if($existeUsuario) $mensaje = "Ya existe un usuario con ese nombre de usuario";
+                else $mensaje = "Usuario o contraseña incorrecta";
             }
             
         }
