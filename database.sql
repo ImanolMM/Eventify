@@ -89,16 +89,8 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`nombre`, `telef`, `dni`, `email`, `nacimiento`, `usuario`, `passwd`, `sal`, `cookie`) VALUES
-('aa', 688851580, '79113393-V', 'aa@gmail.com', '2003-04-28', 'aa', '$2y$10$sDdSOWniZIaNYIGH1aYQBu52KkTCFPTdOFHadxAr/GmWTD63l6ZeC', '5df8b35febda1121a42f85aa12e8922f', ''),
-('ab', 688851580, '79113393-V', 'ab@gmail.com', '2003-04-28', 'ab', '$2y$10$V3vdCr.CCbwgjj99XlZrjuNeXLtu/wujhPhh41NCe96xkZtPKIayC', '2fa2c408eb45b956fdd61bcfb6400e89', ''),
-('abc', 688851580, '79113393-V', 'abc@gmail.com', '2003-04-28', 'abc', '$2y$10$paatFG/fXpXYNBAZ8VMB.eKqO4nb3RvOi3b.mZPTsbTQnvl4YrfIC', 'a4edc548dc68b0ef0d876c274b3b2842', ''),
-('antonio', 688851580, '79113393-V', 'antonio@gmail.com', '2003-04-28', 'antonin', '$2y$10$rqpXA023zDVOq7tQ9oKpU.qaBNnahRHsXe4RaeQ6ijOVtglXJKde6', '8e0120c0d75d07840f8041dffbb6ccf3', ''),
-('Imanol Martinez', 684399392, '46368446-D', 'imanolm.upv@gmail.com', '2003-08-08', 'ImanolMM', 'imanolMM', 'a', ''),
-('jon', 688851580, '79113393-V', 'jon@gmail.com', '2003-04-28', 'jon', '$2y$10$L1LkaUg9mlbEMXOhrlVQeuQuw8BqnVvH0SLHwXg8sFueuZgtTL21O', 'a9cd41f2b3519f8a4e03e0a9870bd105', ''),
-('añañin', 688851580, '79113393-V', 'mikel@gmail.com', '2003-04-28', 'JONDOWN', 'RACISTA', 'a', ''),
-('oo', 688851580, '79113393-V', 'oo@gmail.com', '2003-04-28', 'oo', '$2y$10$OQMiQNdemcoM3pZW2agDkeVHEm6H2Yd50V7RY1PuIA2kL9ymtWkZq', '0370e74811c42f96c58f33b58f819554', ''),
-('rodolfo', 688851580, '79113393-V', 'rodolfo@gmail.com', '2003-04-28', 'rodolfo', '$2y$10$yN5jS9mkaWhunWmQGDGOkOlXKyfI6jO/aJkCFuOnwmFHGjv107S1u', 'be86af13c6290d8d5562f1326a8a588c', '');
+INSERT INTO `usuarios` (`nombre`, `telef`, `dni`, `email`, `nacimiento`, `usuario`, `passwd`, `sal`) VALUES
+('oo', 123456789, '79113393-V', 'aaaaaaaaaaaaaa@scadcads', '2023-11-13', 'oo', '$2y$10$vPnqsCWlzmLlkyySjQHgI.cuH.uUM5cqlIbh0uXsmpLyLX4vDUf1q', '111942044a91deb3106547063d54fb35');
 
 --
 -- Índices para tablas volcadas
